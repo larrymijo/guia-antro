@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antropología del Espacio — Guía de Examen · FAUP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400..700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f1ebdd;
+    --paper-2:#e8e0cd;
+    --card:#fbf7ee;
+    --ink:#1d1a14;
+    --ink-soft:#544d40;
+    --ink-faint:#8a8170;
+    --terra:#bd4626;
+    --terra-deep:#902f17;
+    --slate:#2c4350;
+    --blueprint:#3a5a6b;
+    --highlight:rgba(231,196,49,0.55);
+    --line:rgba(29,26,20,0.14);
+    --line-strong:rgba(29,26,20,0.28);
+    --shadow:0 1px 0 rgba(29,26,20,.06), 0 10px 30px -18px rgba(29,26,20,.5);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Archivo",system-ui,sans-serif;
+    color:var(--ink);
+    background-color:var(--paper);
+    background-image:
+      linear-gradient(rgba(44,67,80,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(44,67,80,.05) 1px, transparent 1px);
+    background-size:26px 26px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--highlight);color:var(--ink)}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* ---------- HEADER ---------- */
+  header.hero{
+    position:relative;
+    padding:46px 0 26px;
+    border-bottom:2px solid var(--ink);
+    overflow:hidden;
+  }
+  .hero .kicker{
+    font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;
+    font-weight:700;color:var(--terra);margin-bottom:14px;
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  }
+  .hero .kicker span.dot{width:6px;height:6px;background:var(--terra);border-radius:50%}
+  .hero h1{
+    font-family:"Fraunces",serif;
+    font-weight:600;
+    font-size:clamp(2.5rem,7vw,5.2rem);
+    line-height:.96;
+    letter-spacing:-.02em;
+    color:var(--ink);
+  }
+  .hero h1 em{font-style:italic;color:var(--terra);font-weight:500}
+  .hero .sub{
+    margin-top:18px;max-width:640px;font-size:1.02rem;color:var(--ink-soft);
+  }
+  .hero .meta-row{
+    margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;
+  }
+  .chip{
+    font-size:.74rem;font-weight:600;letter-spacing:.02em;
+    padding:6px 13px;border:1px solid var(--line-strong);border-radius:100px;
+    background:var(--card);color:var(--ink-soft);
+  }
+  .chip b{color:var(--terra)}
+  .hero-decor{
+    position:absolute;top:-40px;right:-30px;width:340px;height:340px;
+    opacity:.5;pointer-events:none;
+  }
+  @media(max-width:760px){.hero-decor{display:none}}
+
+  /* ---------- NAV ---------- */
+  nav.topnav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(241,235,221,.93);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;gap:6px;overflow-x:auto;padding:11px 22px;
+    max-width:1080px;margin:0 auto;scrollbar-width:thin;
+  }
+  .nav-inner::-webkit-scrollbar{height:5px}
+  .nav-inner::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:4px}
+  .navbtn{
+    flex:0 0 auto;
+    font-family:"Archivo";font-size:.8rem;font-weight:600;
+    color:var(--ink-soft);background:transparent;border:1px solid transparent;
+    padding:7px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;
+    transition:all .18s ease;letter-spacing:.01em;
+  }
+  .navbtn:hover{background:var(--paper-2);color:var(--ink)}
+  .navbtn.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .navbtn .n{font-family:"Fraunces";font-style:italic;opacity:.6;margin-right:6px}
+  .navbtn.special{color:var(--terra)}
+  .navbtn.special.active{background:var(--terra);color:#fff;border-color:var(--terra)}
+
+  /* ---------- SECTIONS ---------- */
+  main{padding:38px 0 90px;min-height:60vh}
+  .view{display:none;animation:fade .4s ease}
+  .view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:8px;flex-wrap:wrap}
+  .sec-num{
+    font-family:"Fraunces";font-size:2.6rem;font-weight:300;font-style:italic;
+    color:var(--terra);line-height:1;
+  }
+  .sec-title{font-family:"Fraunces";font-weight:600;font-size:clamp(1.7rem,4vw,2.7rem);letter-spacing:-.015em;line-height:1.04}
+  .sec-intro{max-width:720px;color:var(--ink-soft);margin:14px 0 30px;font-size:1.02rem}
+  .sec-intro .hl{background:linear-gradient(transparent 58%, var(--highlight) 58%);padding:0 2px}
+
+  h3.block{
+    font-family:"Fraunces";font-weight:600;font-size:1.32rem;margin:38px 0 4px;
+    letter-spacing:-.01em;color:var(--ink);
+    display:flex;align-items:center;gap:11px;
+  }
+  h3.block::before{content:"";width:26px;height:2px;background:var(--terra);display:inline-block}
+  .block-note{color:var(--ink-faint);font-size:.92rem;margin-bottom:18px;max-width:680px}
+
+  /* ---------- CONCEPT CARDS ---------- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin:16px 0}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:13px;
+    padding:18px 19px;box-shadow:var(--shadow);position:relative;
+    transition:transform .16s ease, border-color .16s ease;
+  }
+  .card:hover{transform:translateY(-2px);border-color:var(--line-strong)}
+  .card .tag{
+    font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--terra);margin-bottom:8px;display:block;
+  }
+  .card .tag.blue{color:var(--blueprint)}
+  .card h4{font-family:"Fraunces";font-weight:600;font-size:1.18rem;line-height:1.15;margin-bottom:8px;letter-spacing:-.01em}
+  .card h4 .og{font-family:"Archivo";font-size:.72rem;font-weight:600;color:var(--ink-faint);display:block;margin-top:3px;letter-spacing:.01em;font-style:normal}
+  .card p{font-size:.93rem;color:var(--ink-soft)}
+  .card p+p{margin-top:8px}
+  .card .q{
+    font-family:"Fraunces";font-style:italic;font-size:.96rem;color:var(--ink);
+    border-left:2px solid var(--terra);padding-left:12px;margin-top:11px;
+  }
+  .card .q cite{display:block;font-style:normal;font-family:"Archivo";font-size:.74rem;color:var(--ink-faint);margin-top:5px;letter-spacing:.02em}
+  .card.wide{grid-column:1/-1}
+  .kw{background:linear-gradient(transparent 60%, var(--highlight) 60%);padding:0 1px;font-weight:500;color:var(--ink)}
+
+  /* ---------- SCHEMA / FRAMEWORK BLOCKS ---------- */
+  .schema{
+    background:var(--slate);color:#eef2f0;border-radius:15px;padding:26px 24px;margin:22px 0;
+    position:relative;overflow:hidden;
+  }
+  .schema::after{
+    content:"";position:absolute;inset:0;opacity:.09;pointer-events:none;
+    background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);
+    background-size:22px 22px;
+  }
+  .schema .s-label{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:#f0a787;font-weight:700;position:relative}
+  .schema h4{font-family:"Fraunces";font-weight:600;font-size:1.4rem;margin:6px 0 16px;position:relative;color:#fff}
+  .flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;position:relative}
+  .flow .step{
+    flex:1;min-width:130px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);
+    border-radius:11px;padding:14px;
+  }
+  .flow .arrow{display:flex;align-items:center;justify-content:center;color:#f0a787;font-size:1.5rem;padding:0 9px;font-weight:700}
+  .flow .step .st-n{font-family:"Fraunces";font-style:italic;color:#f0a787;font-size:.9rem}
+  .flow .step b{display:block;font-size:1rem;margin:2px 0 5px;font-family:"Fraunces";font-weight:600}
+  .flow .step span{font-size:.84rem;color:#c8d2d0;line-height:1.45}
+  @media(max-width:620px){.flow{flex-direction:column}.flow .arrow{transform:rotate(90deg);padding:6px 0}}
+
+  /* two-col compare */
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:20px 0;border:1px solid var(--line-strong);border-radius:14px;overflow:hidden}
+  .compare .col{padding:20px 20px}
+  .compare .col:first-child{background:#fbf3e9;border-right:1px solid var(--line-strong)}
+  .compare .col:last-child{background:#eef1f2}
+  .compare .col .ttl{font-family:"Fraunces";font-weight:600;font-size:1.22rem;margin-bottom:4px;line-height:1.1}
+  .compare .col .ttl small{display:block;font-family:"Archivo";font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+  .compare .col:first-child .ttl small{color:var(--terra)}
+  .compare .col:last-child .ttl small{color:var(--slate)}
+  .compare ul{list-style:none;font-size:.92rem;color:var(--ink-soft)}
+  .compare ul li{padding:5px 0 5px 16px;position:relative}
+  .compare ul li::before{content:"›";position:absolute;left:0;color:var(--terra);font-weight:700}
+  .compare .col:last-child ul li::before{color:var(--slate)}
+  @media(max-width:620px){.compare{grid-template-columns:1fr}.compare .col:first-child{border-right:none;border-bottom:1px solid var(--line-strong)}}
+
+  /* matrix grid (5 modes / 6 functions) */
+  .matrix{display:grid;gap:11px;margin:20px 0}
+  .matrix.m6{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .matrix.m5{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+  .mcell{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 16px;
+    position:relative;border-top:3px solid var(--terra);
+  }
+  .mcell .mn{
+    font-family:"Fraunces";font-style:italic;font-size:1.7rem;color:var(--terra);opacity:.85;
+    line-height:1;position:absolute;top:12px;right:14px;
+  }
+  .mcell h5{font-family:"Fraunces";font-weight:600;font-size:1.06rem;margin-bottom:6px;padding-right:30px;line-height:1.12}
+  .mcell p{font-size:.86rem;color:var(--ink-soft)}
+  .mcell.danger{border-top-color:var(--terra-deep)}
+  .mcell.danger .mn{color:var(--terra-deep)}
+
+  /* timeline (stages) */
+  .timeline{margin:22px 0;position:relative;padding-left:6px}
+  .tl-item{display:flex;gap:18px;position:relative;padding-bottom:6px}
+  .tl-rail{flex:0 0 14px;display:flex;flex-direction:column;align-items:center}
+  .tl-dot{width:14px;height:14px;border-radius:50%;background:var(--terra);border:3px solid var(--paper);box-shadow:0 0 0 1px var(--terra);margin-top:6px;z-index:2}
+  .tl-line{flex:1;width:2px;background:var(--line-strong)}
+  .tl-body{flex:1;padding-bottom:22px}
+  .tl-body .tl-ttl{font-family:"Fraunces";font-weight:600;font-size:1.15rem;line-height:1.1}
+  .tl-body .tl-ttl small{font-family:"Archivo";font-weight:600;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);display:block;margin-bottom:2px}
+  .tl-body p{font-size:.92rem;color:var(--ink-soft);margin-top:5px}
+
+  /* ---------- FLASHCARDS ---------- */
+  .fc-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+  .fc-progress{font-family:"Fraunces";font-style:italic;color:var(--ink-soft);font-size:1.05rem}
+  .fc-progress b{color:var(--terra);font-style:normal;font-family:"Archivo";font-weight:700}
+  .fc-filter{display:flex;gap:6px;flex-wrap:wrap}
+  .fc-stage{
+    cursor:pointer;font-size:.75rem;font-weight:600;padding:6px 12px;border-radius:100px;
+    border:1px solid var(--line-strong);background:var(--card);color:var(--ink-soft);transition:all .15s;
+  }
+  .fc-stage.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .flashcard{
+    perspective:1600px;max-width:620px;margin:0 auto;height:340px;cursor:pointer;
+  }
+  .fc-inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
+  .flashcard.flipped .fc-inner{transform:rotateY(180deg)}
+  .fc-face{
+    position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;
+    display:flex;flex-direction:column;justify-content:center;padding:34px 36px;text-align:center;
+    box-shadow:0 18px 44px -24px rgba(29,26,20,.6);
+  }
+  .fc-front{background:var(--card);border:1.5px solid var(--ink)}
+  .fc-front .fc-cat{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-bottom:16px}
+  .fc-front .fc-term{font-family:"Fraunces";font-weight:600;font-size:1.9rem;line-height:1.1;letter-spacing:-.01em}
+  .fc-front .fc-hint{margin-top:20px;font-size:.78rem;color:var(--ink-faint);letter-spacing:.04em}
+  .fc-back{background:var(--slate);color:#eef2f0;border:1.5px solid var(--slate);transform:rotateY(180deg);overflow-y:auto}
+  .fc-back .fc-def{font-size:1rem;line-height:1.55}
+  .fc-back .fc-def strong{color:#f0a787}
+  .fc-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:24px}
+  .fc-btn{
+    font-family:"Archivo";font-weight:600;font-size:.9rem;padding:11px 22px;border-radius:100px;cursor:pointer;
+    border:1px solid var(--ink);background:var(--paper);color:var(--ink);transition:all .15s;
+  }
+  .fc-btn:hover{background:var(--ink);color:var(--paper)}
+  .fc-btn.primary{background:var(--terra);border-color:var(--terra);color:#fff}
+  .fc-btn.primary:hover{background:var(--terra-deep);border-color:var(--terra-deep)}
+
+  /* ---------- QUIZ ---------- */
+  .quiz-wrap{max-width:720px;margin:0 auto}
+  .quiz-card{background:var(--card);border:1px solid var(--line-strong);border-radius:16px;padding:26px 26px;box-shadow:var(--shadow)}
+  .quiz-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .quiz-meta .qn{font-family:"Fraunces";font-style:italic;color:var(--ink-soft)}
+  .quiz-meta .score{font-size:.82rem;font-weight:700;color:var(--terra)}
+  .quiz-q{font-family:"Fraunces";font-weight:600;font-size:1.3rem;line-height:1.22;margin-bottom:18px;letter-spacing:-.01em}
+  .opt{
+    display:block;width:100%;text-align:left;background:var(--paper);border:1.5px solid var(--line-strong);
+    border-radius:11px;padding:13px 16px;margin-bottom:10px;cursor:pointer;font-family:"Archivo";font-size:.95rem;
+    color:var(--ink);transition:all .15s;line-height:1.4;
+  }
+  .opt:hover:not(:disabled){border-color:var(--ink);background:var(--paper-2)}
+  .opt:disabled{cursor:default}
+  .opt.correct{border-color:#2e7d4f;background:#e3f1e7;color:#1d4a30}
+  .opt.wrong{border-color:var(--terra-deep);background:#f7e6e0;color:var(--terra-deep)}
+  .opt .mk{font-weight:700;margin-right:10px;font-family:"Fraunces";font-style:italic}
+  .explain{
+    margin-top:6px;font-size:.9rem;color:var(--ink-soft);background:#fbf3e9;border-left:3px solid var(--terra);
+    border-radius:0 8px 8px 0;padding:12px 14px;display:none;
+  }
+  .explain.show{display:block;animation:fade .3s}
+  .explain b{color:var(--terra-deep)}
+  .quiz-foot{display:flex;justify-content:space-between;align-items:center;margin-top:18px;gap:12px;flex-wrap:wrap}
+  .dotbar{display:flex;gap:5px;flex-wrap:wrap}
+  .dotbar i{width:9px;height:9px;border-radius:50%;background:var(--line-strong);display:inline-block;transition:.2s}
+  .dotbar i.done{background:var(--ink)}
+  .dotbar i.cur{background:var(--terra);transform:scale(1.3)}
+  .quiz-result{text-align:center;padding:20px}
+  .quiz-result .big{font-family:"Fraunces";font-size:4rem;font-weight:600;color:var(--terra);line-height:1}
+  .quiz-result .lbl{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin-bottom:8px}
+  .quiz-result h4{font-family:"Fraunces";font-weight:600;font-size:1.5rem;margin:10px 0 6px}
+  .quiz-result p{color:var(--ink-soft);max-width:440px;margin:0 auto 20px}
+
+  /* search */
+  .searchbox{position:relative;max-width:420px;margin:0 0 24px}
+  .searchbox input{
+    width:100%;font-family:"Archivo";font-size:.95rem;padding:11px 16px 11px 40px;border-radius:100px;
+    border:1.5px solid var(--line-strong);background:var(--card);color:var(--ink);
+  }
+  .searchbox input:focus{outline:none;border-color:var(--terra)}
+  .searchbox svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);opacity:.5}
+  .no-match{display:none;color:var(--ink-faint);font-style:italic;padding:14px 0}
+
+  /* thinkers */
+  .thinker{display:flex;gap:18px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:18px 20px;margin-bottom:12px;box-shadow:var(--shadow)}
+  .thinker .ini{
+    flex:0 0 56px;height:56px;border-radius:12px;background:var(--ink);color:var(--paper);
+    font-family:"Fraunces";font-weight:600;font-size:1.5rem;display:flex;align-items:center;justify-content:center;
+  }
+  .thinker.t2 .ini{background:var(--terra)}
+  .thinker.t3 .ini{background:var(--slate)}
+  .thinker .body h4{font-family:"Fraunces";font-weight:600;font-size:1.2rem;line-height:1.1}
+  .thinker .body .role{font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);margin:2px 0 7px}
+  .thinker .body p{font-size:.92rem;color:var(--ink-soft)}
+  .thinker .body .tquote{font-family:"Fraunces";font-style:italic;font-size:.92rem;color:var(--ink);margin-top:7px;border-left:2px solid var(--line-strong);padding-left:10px}
+
+  footer{border-top:2px solid var(--ink);padding:30px 0 50px;text-align:center;color:var(--ink-faint);font-size:.84rem}
+  footer .wrap{display:flex;flex-direction:column;gap:6px;align-items:center}
+  footer b{color:var(--ink-soft)}
+
+  .pill-legend{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 22px;font-size:.78rem;color:var(--ink-faint)}
+  .pill-legend span{display:inline-flex;align-items:center;gap:6px}
+  .pill-legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+  .callout{
+    background:#fbf3e9;border:1px dashed var(--terra);border-radius:13px;padding:16px 18px;margin:20px 0;
+    font-size:.93rem;color:var(--ink-soft);
+  }
+  .callout b{color:var(--terra-deep);font-family:"Fraunces";font-style:italic;font-weight:600}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg class="hero-decor" viewBox="0 0 200 200" fill="none" stroke="#bd4626" stroke-width="1">
+    <circle cx="100" cy="100" r="80"/><circle cx="100" cy="100" r="55"/><circle cx="100" cy="100" r="30"/>
+    <line x1="100" y1="0" x2="100" y2="200"/><line x1="0" y1="100" x2="200" y2="100"/>
+    <line x1="29" y1="29" x2="171" y2="171"/><line x1="171" y1="29" x2="29" y2="171"/>
+  </svg>
+  <div class="wrap">
+    <div class="kicker"><span class="dot"></span> FAUP · Faculdade de Arquitetura · U. Porto <span class="dot"></span> Guía de Estudio</div>
+    <h1>Antropología<br>del <em>Espacio</em></h1>
+    <p class="sub">Una guía interactiva para tu examen: de la <strong>ruptura epistemológica</strong> a la <strong>producción del espacio</strong> de Lefebvre. Repasa por módulos, practica con flashcards y pon a prueba lo que sabes.</p>
+    <div class="meta-row">
+      <span class="chip">Examen <b>70%</b> · Trabajo <b>30%</b></span>
+      <span class="chip">Duración <b>1h30</b></span>
+      <span class="chip">1 pregunta <b>obligatoria</b> + preguntas a elegir</span>
+      <span class="chip">Formato: <b>escribir + fotografiar</b></span>
+    </div>
+  </div>
+</header>
+
+<nav class="topnav">
+  <div class="nav-inner" id="navInner">
+    <button class="navbtn active" data-view="v0"><span class="n">00</span>El examen</button>
+    <button class="navbtn" data-view="v1"><span class="n">01</span>La Ruptura Epistemológica</button>
+    <button class="navbtn" data-view="v2"><span class="n">02</span>Ciencias Sociales</button>
+    <button class="navbtn" data-view="v3"><span class="n">03</span>La Ciudad en la Historia</button>
+    <button class="navbtn" data-view="v4"><span class="n">04</span>Espacios Rurales</button>
+    <button class="navbtn" data-view="v5"><span class="n">05</span>Vida Cotidiana</button>
+    <button class="navbtn" data-view="v6"><span class="n">06</span>Lefebvre</button>
+    <button class="navbtn" data-view="vp"><span class="n">★</span>Pensadores</button>
+    <button class="navbtn special" data-view="vf">⚡ Flashcards</button>
+    <button class="navbtn special" data-view="vq">✎ Autoexamen</button>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<!-- ========================= 00 EL EXAMEN ========================= -->
+<section class="view active" id="v0">
+  <div class="sec-head"><span class="sec-num">00</span><h2 class="sec-title">Cómo usar esta guía</h2></div>
+  <p class="sec-intro">El curso recorre un único gran argumento: <span class="hl">para entender el espacio hay que dejar de darlo por evidente.</span> Primero se construye una mirada científica (la ruptura), luego se aplica a la ciudad a lo largo de la historia, al mundo rural y a la vida cotidiana, y culmina con la teoría radical de Henri Lefebvre. Cada módulo de abajo es una pieza de ese hilo.</p>
+
+  <div class="cards">
+    <div class="card"><span class="tag">Recorrido</span><h4>El hilo del curso</h4><p>Ruptura epistemológica → paradigmas de las ciencias sociales → la ciudad (Marx, Weber, Simmel) → lo rural → la vida cotidiana urbana → Lefebvre. Todo apunta a la idea final: <span class="kw">el espacio (social) es un producto (social)</span>.</p></div>
+    <div class="card"><span class="tag">Tarjetas</span><h4>Repaso activo</h4><p>En <b>Flashcards</b> tienes los conceptos y citas clave. Intenta responder antes de girar la tarjeta: la recuperación activa fija mucho más que releer.</p></div>
+    <div class="card"><span class="tag">Práctica</span><h4>Autoexamen</h4><p>El <b>Autoexamen</b> tiene preguntas de opción múltiple con explicación. Úsalo para detectar lagunas, no solo para puntuar.</p></div>
+  </div>
+
+  <h3 class="block">Logística del examen (según tus apuntes)</h3>
+  <p class="block-note">Anotaciones prácticas que aparecen en tus notas. Confírmalas siempre con el profesor antes de la fecha.</p>
+  <div class="cards">
+    <div class="card"><span class="tag blue">Estructura</span><h4>1h30 · 2 aulas</h4><p>Una <span class="kw">pregunta obligatoria</span> y otras a elegir. La nota se reparte <b>70% examen + 30% trabajo</b>; el trabajo combina <b>escribir + fotografiar</b> el espacio.</p></div>
+    <div class="card"><span class="tag blue">Calendario</span><h4>Fechas anotadas</h4><p>Examen de Antropología señalado el <b>5 de julio (10:30)</b>; entrega del trabajo el domingo posterior al examen. (Verifica estas fechas.)</p></div>
+    <div class="card"><span class="tag blue">Enfoque</span><h4>Pensar el espacio</h4><p>No basta describir lugares: el examen pide <span class="kw">aplicar conceptos</span> (ruptura, producción del espacio, modos de apropiación) a casos reales como <b>Porto</b> y su gentrificación comercial.</p></div>
+  </div>
+
+  <div class="callout"><b>Consejo de estudio.</b> Para cada autor pregúntate tres cosas: ¿cuál es su <b>unidad de análisis</b> (el individuo, la relación, el modo de producción, el valor de uso…)? ¿qué <b>critica</b>? y ¿qué <b>concepto-clave</b> aporta para leer el espacio? Si puedes contestar eso de Marx, Weber, Simmel, Durkheim y Lefebvre, tienes el esqueleto del examen.</div>
+</section>
+
+<!-- ========================= 01 RUPTURA ========================= -->
+<section class="view" id="v1">
+  <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">La Ruptura Epistemológica</h2></div>
+  <p class="sec-intro"><em>Conquistar el hecho social.</em> El mayor obstáculo para entender la sociedad es <span class="hl">nuestra propia experiencia dentro de ella</span>. La ciencia social debe romper con la "ilusión de transparencia" para construir un objeto riguroso. La base es Bachelard y Bourdieu.</p>
+
+  <div class="schema">
+    <span class="s-label">El método científico · Bourdieu / Bachelard</span>
+    <h4>El hecho científico se conquista, se construye y se verifica</h4>
+    <div class="flow">
+      <div class="step"><span class="st-n">01</span><b>Ruptura</b><span>Romper con el saber espontáneo. Formular una hipótesis contra el sentido común.</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="st-n">02</span><b>Construcción</b><span>Definir los conceptos con rigor. Construir el objeto teórico ("problematización").</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="st-n">03</span><b>Verificación</b><span>Poner a prueba el modelo contra la realidad empírica.</span></div>
+    </div>
+  </div>
+
+  <div class="searchbox" data-scope="v1">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d1a14" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+    <input type="text" placeholder="Buscar concepto en este módulo…">
+  </div>
+
+  <h3 class="block">La ilusión de transparencia</h3>
+  <div class="cards" data-cardset="v1">
+    <div class="card"><span class="tag">Saber espontáneo</span><h4>Conocimiento pragmático</h4><p>Inmediato, formado por la experiencia diaria. Se guía por explicaciones "oficiales" o religiosas. Cree que la realidad se ve directamente.</p></div>
+    <div class="card"><span class="tag blue">Saber científico</span><h4>Conocimiento construido</h4><p>Especializado y <span class="kw">contraintuitivo</span>. Requiere una "ruptura" violenta respecto a la experiencia personal para poder verse.</p></div>
+    <div class="card wide"><span class="tag">Tesis central</span><h4 class="og">La verdad no se encuentra, se construye</h4><p class="q">"La ciencia se opone a la opinión. La opinión piensa mal; no piensa."<cite>— Gaston Bachelard</cite></p></div>
+  </div>
+
+  <h3 class="block">Los tres obstáculos epistemológicos</h3>
+  <p class="block-note">Tres trampas del sentido común que impiden ver lo social. Cada una tiene su antídoto metodológico.</p>
+  <div class="cards" data-cardset="v1">
+    <div class="card"><span class="tag">Obstáculo 1</span><h4>Naturalismo<span class="og">La trampa de la "naturaleza humana"</span></h4><p>El mito: explicar la sociedad mediante instintos biológicos o psicológicos inmutables ("instinto", "raza", "talento innato").</p><p>La realidad: los comportamientos "naturales" están casi siempre <span class="kw">mediados culturalmente</span>.</p></div>
+    <div class="card"><span class="tag">Concepto</span><h4>Naturalización</h4><p>El proceso por el cual condiciones <em>sociales</em> se hacen parecer un <span class="kw">destino biológico</span> para justificar el statu quo.</p><p class="q">"No hay elecciones innatas. Hay trayectorias sociales."<cite>— Pierre Bourdieu</cite></p></div>
+    <div class="card"><span class="tag">Obstáculo 2</span><h4>Individualismo</h4><p>El mito: la sociedad es un mero agregado de individuos; los resultados son fruto del libre albedrío aislado (el "Robinson Crusoe").</p><p>La realidad: el "individuo" es un <span class="kw">producto social</span>. La sociología mira relaciones, no átomos.</p><p class="q">"Explicar lo social por lo psicológico es siempre falso."<cite>— Émile Durkheim</cite></p></div>
+    <div class="card"><span class="tag">Obstáculo 3</span><h4>Etnocentrismo</h4><p>El mito: "el Nosotros" como medida del "Ellos". Ver el mundo a través de la lente de nuestro propio contexto histórico específico.</p><p><b>Caso:</b> ¿es universal el "beneficio"? En muchas sociedades el estatus se gana <span class="kw">regalando o destruyendo</span> riqueza, no acumulándola.</p></div>
+  </div>
+
+  <h3 class="block">Las herramientas de construcción — R + R + T</h3>
+  <div class="matrix m6">
+    <div class="mcell"><span class="mn">R</span><h5>Relativización</h5><p>Antídoto del etnocentrismo y el naturalismo. Suspender los propios marcos para ver otras lógicas.</p></div>
+    <div class="mcell"><span class="mn">R</span><h5>Relación</h5><p>Antídoto del individualismo. Lo social son relaciones de interacción entre el agente y la estructura.</p></div>
+    <div class="mcell"><span class="mn">T</span><h5>Teoría</h5><p>El plano para la observación. Los hechos sociales son complejos y pluridimensionales: sin teoría no se ven.</p></div>
+  </div>
+  <p class="no-match" data-scope="v1">Sin resultados en este módulo.</p>
+</section>
+
+<!-- ========================= 02 CIENCIAS SOCIALES ========================= -->
+<section class="view" id="v2">
+  <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Las Ciencias Sociales y sus Paradigmas</h2></div>
+  <p class="sec-intro">Las ciencias sociales <span class="hl">nacen del colapso del viejo orden</span>: la industrialización y la urbanización destruyen la vida tradicional, la sociedad se vuelve un "problema" que exige gestión racional. Se inventan para descifrar el mundo nuevo.</p>
+
+  <div class="schema">
+    <span class="s-label">Genealogía</span>
+    <h4>Del colapso del orden a la invención de lo social</h4>
+    <div class="flow">
+      <div class="step"><span class="st-n">s. XVII</span><b>Antiguo orden</b><span>Vida tradicional estable.</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="st-n">Catalizador</span><b>Rev. Industrial + Democráticas</b><span>Industrialización y urbanización quiebran la tradición.</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="st-n">s. XIX</span><b>Ciencias sociales</b><span>Se inventan para gestionar y descifrar el mundo nuevo.</span></div>
+    </div>
+  </div>
+
+  <h3 class="block">Las miradas disciplinares</h3>
+  <p class="block-note">Las disciplinas no son temas distintos, sino <span class="kw">perspectivas teóricas distintas</span> sobre el mismo hecho social.</p>
+  <div class="cards" data-cardset="v2">
+    <div class="card"><span class="tag">Lente económica</span><h4>Escasez y racionalidad</h4><p>Estudia la relación entre fines ilimitados y medios escasos. Eje: producción → distribución → consumo.</p></div>
+    <div class="card"><span class="tag">Lente sociológica · Durkheim</span><h4>Los hechos sociales coaccionan</h4><p>Los <span class="kw">"hechos sociales"</span> (leyes, moral) ejercen coerción sobre el individuo. Enfoque <b>explicativo</b>, funcionalista, positivista. Meta: explicar el individuo a través del colectivo.</p></div>
+    <div class="card"><span class="tag">Lente sociológica · Weber</span><h4>La acción social</h4><p>Comprender la <span class="kw">"acción social"</span> como conducta orientada hacia los demás. Enfoque <b>comprensivo</b> (interpretativo), no solo causal.</p></div>
+    <div class="card"><span class="tag">Lente psicológica</span><h4>La interfaz bio-social</h4><p>El punto de encuentro entre lo biológico y lo social en la conducta.</p></div>
+    <div class="card"><span class="tag blue">Tiempo y diversidad</span><h4>Historia + Antropología</h4><p><b>Historia:</b> estudia la sociedad como un flujo irreversible de cambio en el tiempo. <b>Antropología:</b> estudia la diversidad de la experiencia humana para <span class="kw">combatir el etnocentrismo</span>.</p></div>
+    <div class="card"><span class="tag blue">Espacio y signos</span><h4>Geografía + Semiología</h4><p>El espacio y los signos como dimensiones del hecho social: dónde y cómo se significa.</p></div>
+  </div>
+
+  <h3 class="block">Los campos de batalla internos</h3>
+  <div class="cards" data-cardset="v2">
+    <div class="card wide"><span class="tag">Paradigmas en conflicto</span><h4>El conflicto como motor</h4><p>Las ciencias no están unificadas: están divididas por <span class="kw">paradigmas en competencia</span> (estructuralismo vs. liberalismo, conflicto vs. consenso). Ese conflicto interno no es una debilidad: es el motor del progreso científico, atravesado por ideologías y poder institucional.</p></div>
+  </div>
+
+  <h3 class="block">Métodos de investigación</h3>
+  <div class="matrix m6">
+    <div class="mcell"><span class="mn">1</span><h5>Cuantitativos</h5><p>Estadísticas oficiales, censos, encuestas/cuestionarios. Vinculados al enfoque <b>explicativo</b>.</p></div>
+    <div class="mcell"><span class="mn">2</span><h5>Cualitativos</h5><p>Observación directa (participante / no participante). La <span class="kw">etnografía = trabajo de campo</span>. Vinculados al enfoque <b>comprensivo</b>.</p></div>
+    <div class="mcell"><span class="mn">3</span><h5>Mixtos</h5><p>Combinan ambas estrategias para captar lo complejo y pluridimensional.</p></div>
+  </div>
+</section>
+
+<!-- ========================= 03 LA CIUDAD ========================= -->
+<section class="view" id="v3">
+  <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Paradigmas del Espacio: La Ciudad en la Historia</h2></div>
+  <p class="sec-intro">Cómo distintos clásicos leen la ciudad. Para <strong>Marx</strong> es la manifestación física del modo de producción; para <strong>Weber</strong>, una comunidad de mercado e incubadora de racionalidad; para <strong>Simmel</strong>, una forma de vivir y de personalidad.</p>
+
+  <div class="searchbox" data-scope="v3">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d1a14" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+    <input type="text" placeholder="Buscar autor o concepto…">
+  </div>
+
+  <h3 class="block">La lente marxista — la ciudad como modo de producción</h3>
+  <div class="cards" data-cardset="v3">
+    <div class="card"><span class="tag">Premisa</span><h4>La ciudad es física del modo de producción</h4><p>A diferencia de Weber (cultura), Marx y Engels analizan la ciudad por sus <span class="kw">condiciones materiales</span>. Advertencia: "lo urbano" distrae; busca las contradicciones económicas.</p></div>
+    <div class="card"><span class="tag">Motor de la historia</span><h4>El gran cisma ciudad–campo</h4><p>Crecimiento demográfico → división del trabajo → separación de mente y materia → el antagonismo <span class="kw">ciudad vs. campo</span>, que arranca con la distribución.</p></div>
+  </div>
+
+  <h3 class="block">Las etapas históricas de la ciudad</h3>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-rail"><span class="tl-dot"></span><span class="tl-line"></span></div><div class="tl-body"><div class="tl-ttl"><small>Tesis</small>Estadio tribal</div><p>Propiedad comunal; división del trabajo natural/familiar. Aún no hay conflicto entre ciudad y campo.</p></div></div>
+    <div class="tl-item"><div class="tl-rail"><span class="tl-dot"></span><span class="tl-line"></span></div><div class="tl-body"><div class="tl-ttl"><small>Antítesis</small>La ciudad antigua (Pólis)</div><p>La ciudad domina al campo (centro militar). Propiedad privada de la tierra mediada por la <span class="kw">ciudadanía</span>. "Ruralización de la ciudad".</p></div></div>
+    <div class="tl-item"><div class="tl-rail"><span class="tl-dot"></span><span class="tl-line"></span></div><div class="tl-body"><div class="tl-ttl"><small>Feudalismo</small>La ciudad feudal</div><p>El campo es dominante. La <span class="kw">tierra es el único capital</span>; el siervo es un accesorio del suelo. La ciudad queda subordinada: propiedad corporativa de los gremios, capital natural (herramientas, oficios hereditarios), estable.</p></div></div>
+    <div class="tl-item"><div class="tl-rail"><span class="tl-dot"></span><span class="tl-line"></span></div><div class="tl-body"><div class="tl-ttl"><small>Transición</small>La ciudad comercial</div><p>Los mercaderes rompen el aislamiento de las villas. Paso del capital natural (oficios) al <span class="kw">capital móvil</span> (dinero/comercio).</p></div></div>
+    <div class="tl-item"><div class="tl-rail"><span class="tl-dot" style="background:var(--terra-deep);box-shadow:0 0 0 1px var(--terra-deep)"></span></div><div class="tl-body"><div class="tl-ttl"><small>Síntesis</small>La metamorfosis industrial</div><p>Catalizador: <span class="kw">máquina de vapor + maquinaria textil = sistema fabril</span>. Centralización de la producción → centralización de la gente → "ciudades gigantescas" de la noche a la mañana. <b>Victoria total de la ciudad sobre el campo</b> = urbanización.</p></div></div>
+  </div>
+
+  <div class="schema">
+    <span class="s-label">Engels · Manchester</span>
+    <h4>La lógica de la segregación: el "urbanismo hipócrita"</h4>
+    <div class="flow">
+      <div class="step"><b>La fachada</b><span>Las tiendas alinean las calles principales para ocultar los <em>slums</em> a los ricos que pasan.</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><b>Los slums</b><span>La clase trabajadora vive escondida tras esa cáscara comercial.</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><b>Villas burguesas</b><span>"Aire limpio" en la periferia. La falsa solución (mito de Proudhon: convertir inquilinos en propietarios).</span></div>
+    </div>
+  </div>
+
+  <h3 class="block">Weber — la ciudad como comunidad y racionalidad</h3>
+  <div class="cards" data-cardset="v3">
+    <div class="card"><span class="tag">Tipo ideal</span><h4>La ciudad occidental</h4><p>Definida por tres ejes: <span class="kw">mercado, honor y autoridad</span>. Es la incubadora de la racionalidad.</p></div>
+    <div class="card"><span class="tag">Cadena de racionalización</span><h4>Hacia el capitalismo moderno</h4><p>Ciudad occidental → derecho racional (juristas) → burocracia → <span class="kw">capitalismo moderno y ciencia</span>.</p></div>
+    <div class="card"><span class="tag">Libertad urbana</span><h4>"Die Stadtluft macht frei"</h4><p>"El aire de la ciudad hace libre": si un siervo entraba en la ciudad, el señor feudal perdía el derecho a reclamarlo.</p></div>
+    <div class="card"><span class="tag blue">Marx vs. Weber</span><h4>Más complementarios que opuestos</h4><p>Marx: la <b>economía</b> determina la autoridad. Weber: la <b>autoridad</b> y la cultura modelan la economía. Síntesis: comunidad de mercado + acción racional.</p></div>
+  </div>
+
+  <h3 class="block">Simmel y Halbwachs — densidad, mente y memoria</h3>
+  <div class="cards" data-cardset="v3">
+    <div class="card"><span class="tag">Simmel</span><h4>"La densidad no crea una ciudad"</h4><p>Frente a la mirada demográfica, la ciudad es una <span class="kw">forma de personalidad</span>. En la metrópolis: intensificación de los estímulos nerviosos, el intelecto como armadura, el pragmatismo brutal de la economía del dinero.</p></div>
+    <div class="card"><span class="tag">Simmel</span><h4>La espada de doble filo de la libertad urbana</h4><p>"En un contexto de hipersocialización se generan límites que crean <span class="kw">seres humanos solitarios</span>": aislamiento entre cien mil. Liberación e hipertrofia de la cultura objetiva.</p></div>
+    <div class="card"><span class="tag blue">Halbwachs</span><h4>La memoria colectiva</h4><p>El arquitecto que une dos mundos. "El pasado no se conserva; se <span class="kw">reconstruye</span>". El espacio da la ilusión de permanencia; es el sustrato material de la sociedad.</p></div>
+    <div class="card"><span class="tag blue">Charles Booth</span><h4>La cartografía de la clase</h4><p>El mapa de pobreza de Londres: estadística + cartografía social para "descomponer las masas".</p></div>
+  </div>
+  <p class="no-match" data-scope="v3">Sin resultados en este módulo.</p>
+</section>
+
+<!-- ========================= 04 RURAL ========================= -->
+<section class="view" id="v4">
+  <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Espacios Sociales Rurales</h2></div>
+  <p class="sec-intro">El espacio rural se lee en una <span class="hl">dialéctica de tres planos</span>: social, físico y simbólico. La <strong>urbanización</strong> es el proceso social que cambia el movimiento y la vida cotidiana del campo, hasta reimaginar la ruralidad.</p>
+
+  <div class="schema">
+    <span class="s-label">Topografía de transición</span>
+    <h4>Autonomía sistémica del pueblo no urbanizado</h4>
+    <div class="flow">
+      <div class="step"><b>Espacial</b><span>Relación de proximidad: todos cerca de todos.</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><b>Social</b><span>"Total interknowledge": todos se conocen entre todos.</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><b>Control ecológico</b><span>Transparencia hacia dentro, opacidad hacia fuera → solidaridad interna ↔ hostilidad externa.</span></div>
+    </div>
+  </div>
+
+  <h3 class="block">Estructura del mundo rural</h3>
+  <div class="cards" data-cardset="v4">
+    <div class="card"><span class="tag">Mediación</span><h4>Los Notables</h4><p>Intermedian entre el <span class="kw">mundo local y el mundo exterior</span>. Las personas tienen un "sentido del lugar ocupado".</p></div>
+    <div class="card"><span class="tag">Ciclo económico</span><h4>Subsistencia → estabilidad</h4><p>Subsistencia y excedente → consumo ritual → estabilidad social → reinversión del capital. Un circuito cerrado y estable.</p></div>
+    <div class="card"><span class="tag">Rasgos</span><h4>El campo tradicional</h4><p>Dependencia de la <span class="kw">oralidad</span>, contacto reducido con culturas urbanas, uso de animales de labor. Gran emigración (p. ej. a París).</p></div>
+  </div>
+
+  <h3 class="block">El shock del sistema</h3>
+  <p class="block-note">La modernización golpea el mundo rural con tres fuerzas encadenadas.</p>
+  <div class="matrix m6">
+    <div class="mcell"><span class="mn">1</span><h5>Mecanización</h5><p>La mecanización agrícola transforma el trabajo y rompe la organización comunal.</p></div>
+    <div class="mcell"><span class="mn">2</span><h5>Racionalización</h5><p>La lógica de eficiencia sustituye a la costumbre y la tradición.</p></div>
+    <div class="mcell"><span class="mn">3</span><h5>Individualización</h5><p>Se disuelve el "nosotros" comunal; emerge el individuo.</p></div>
+  </div>
+
+  <div class="cards" data-cardset="v4">
+    <div class="card wide"><span class="tag blue">Dualidad morfológica</span><h4>El hábitat rural moderno</h4><p>La ciudad se vuelve el <span class="kw">modelo absoluto de aspiración y juicio</span>: aspira recursos humanos y físicos del campo. Los campos quedan dependientes de las cadenas de abastecimiento y las autopistas. El resultado es una dualidad: <b>segundas residencias</b> frente a <b>residentes locales</b>. La agricultura se transforma y la ruralidad se reimagina.</p></div>
+  </div>
+</section>
+
+<!-- ========================= 05 VIDA COTIDIANA ========================= -->
+<section class="view" id="v5">
+  <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">La Arquitectura de la Vida Cotidiana</h2></div>
+  <p class="sec-intro">Industrialización, urbanización y la <span class="hl">reconfiguración de la sociedad</span>. Clave: industrializarse no es lo mismo que urbanizarse. La movilidad disuelve el control ecológico local y reorganiza toda la vida diaria.</p>
+
+  <div class="compare">
+    <div class="col"><div class="ttl"><small>Densidad sin ciudad</small>Zona industrial de transición</div><ul><li>Densidad extrema, hábitat aislado</li><li>Ritmo marcado por la actividad productiva</li><li>Vida diaria aún ligada a controles ecológicos rígidos y locales</li><li>Falta de funciones terciarias / servicios</li></ul></div>
+    <div class="col"><div class="ttl"><small>El verdadero centro</small>Centro urbano real</div><ul><li>Conectividad diversa</li><li>Tejido urbano fluido</li><li>Movilidad multidireccional</li><li>La movilidad —no la cercanía— define la vida</li></ul></div>
+  </div>
+  <p class="block-note">Las regiones industriales tempranas generaron densidad y hábitats compactos, pero <span class="kw">no crearon ciudades automáticamente</span>: la vida diaria seguía siendo estructuralmente rural.</p>
+
+  <h3 class="block">El nacimiento del "Yo": dinero y movilidad</h3>
+  <div class="schema">
+    <span class="s-label">De la comunidad al individuo</span>
+    <h4>La lógica de la movilidad</h4>
+    <div class="flow">
+      <div class="step"><b>Romper raíces locales</b><span>La movilidad espacial destruye el control ecológico del pueblo industrial.</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><b>La ciudad invisible</b><span>Se sustituye el conocimiento interpersonal directo por evaluaciones institucionales abstractas y lógica comparativa.</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><b>Negociación institucional</b><span>De la confrontación con un patrón conocido a negociar con entidades abstractas (oligopolios, poderes políticos).</span></div>
+    </div>
+  </div>
+  <p class="block-note">Del pago en raciones y vales (supervivencia colectiva inmediata) al <span class="kw">salario en metálico</span>: el dinero individualiza. La "armonía en la jerarquía" se rompe cuando los trabajadores reconocen su rol colectivo y crean contrapoder.</p>
+
+  <h3 class="block">La ruptura de la ciudad tradicional</h3>
+  <div class="compare">
+    <div class="col"><div class="ttl"><small>Pre-urbanización</small>La ciudad amurallada</div><ul><li>Realidad espacial: límites morfológicos claros (los muros)</li><li>Realidad social: comunidad delimitada</li><li>Simbolismo: el límite define la identidad</li></ul></div>
+    <div class="col"><div class="ttl"><small>Expansión e industrialización</small>La ciudad urbanizada</div><ul><li>Supresión de fronteras: expansión periférica infinita e inestable</li><li>La aglomeración sustituye a la ciudad unificada</li><li>Definida por el alcance de la <b>movilidad diaria</b></li></ul></div>
+  </div>
+
+  <div class="cards" data-cardset="v5">
+    <div class="card"><span class="tag">Plano industrial</span><h4>Segregación socioespacial</h4><p>Núcleos de empleo descentralizados reestructuran la gravedad regional. <span class="kw">Monofuncionalismo</span>: barrio comercial, vacío residencial, periferia como hub.</p></div>
+    <div class="card"><span class="tag">Disociación</span><h4>La gran escisión de la experiencia</h4><p>Espacio profesional (producción) ↔ distancia espacial ↔ espacio extra-profesional (consumo, ocio, residencia). Resultado: <span class="kw">dilución de la conciencia de clase</span>.</p></div>
+    <div class="card"><span class="tag">Control social</span><h4>El fin del control ecológico</h4><p>La observación directa por los vecinos ya no es posible. La vida se dispersa por geografías desconectadas: el control social localizado queda <span class="kw">obsoleto</span>, sustituido por regulación abstracta.</p></div>
+    <div class="card"><span class="tag blue">Dos lógicas</span><h4>Máquina vs. microcosmos</h4><p>Lógica funcional (el sistema): la ciudad como <span class="kw">máquina especializada</span>. Lógica residencial (los habitantes): el barrio como microcosmos que reproduce a una clase. La movilidad es el pegamento maestro.</p></div>
+  </div>
+
+  <h3 class="block">★ Matriz: los 5 modos de apropiación del espacio</h3>
+  <p class="block-note">Marco muy preguntable. Cuando la urbanización destruye el entorno totalizador donde las prioridades eran colectivas, el individuo queda librado a sí mismo y surgen distintos modos de habitar el espacio descompuesto.</p>
+  <div class="matrix m5">
+    <div class="mcell"><span class="mn">1</span><h5>Barrios tradicionales</h5><p>Vestigios del pasado, alta memoria local. Fuerte control visual (el extraño se nota). Orgullo obrero frente a las amenazas de renovación urbana.</p></div>
+    <div class="mcell"><span class="mn">2</span><h5>Comunidades de transición</h5><p>Zonas de llegada de inmigrantes y migrantes rurales. Recrean códigos culturales familiares (comida, lengua). Actúan como <span class="kw">amortiguador</span> y espacio de aprendizaje.</p></div>
+    <div class="mcell"><span class="mn">3</span><h5>Centros abandonados</h5><p>Cascos históricos degradados, poblados por grupos marginados. Mala vivienda y falta de movilidad: atrapamiento espacial y comercio secundario.</p></div>
+    <div class="mcell danger"><span class="mn">4</span><h5>Slums (bairros de lata)</h5><p>Espacios intersticiales y precarios. Sin infraestructura, pero con reglas internas fuertes e invisibles. Alta ayuda mutua para sobrevivir a la exclusión extrema.</p></div>
+    <div class="mcell"><span class="mn">5</span><h5>Comunidades alternativas</h5><p>Resistencia intencional de poblaciones muy formadas. Retorno deliberado al localismo; rechazan el anonimato moderno por la <span class="kw">autogestión</span>.</p></div>
+  </div>
+</section>
+
+<!-- ========================= 06 LEFEBVRE ========================= -->
+<section class="view" id="v6">
+  <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title">Henri Lefebvre: La Revolución Urbana</h2></div>
+  <p class="sec-intro"><em>Del derecho a la ciudad a la producción del espacio.</em> Síntesis de la sociología urbana marxista y una teoría crítica del espacio. Es la lección más reciente del curso y el núcleo probable del examen: <span class="hl">el espacio (social) es un producto (social)</span>.</p>
+
+  <div class="searchbox" data-scope="v6">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d1a14" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+    <input type="text" placeholder="Buscar concepto de Lefebvre…">
+  </div>
+
+  <div class="schema">
+    <span class="s-label">El gran giro</span>
+    <h4>De la ciudad → al espacio</h4>
+    <div class="flow">
+      <div class="step"><b>Concepto central</b><span>La "ciudad" como objeto histórico delimitado ha muerto. La urbanización total la ha sustituido: el verdadero campo de batalla del capitalismo tardío es el <em>espacio</em> mismo.</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><b>El contexto</b><span>La naturaleza ya no es un absoluto intacto: ha sido completamente absorbida como materia prima a transformar por el modo de producción.</span></div>
+    </div>
+  </div>
+
+  <h3 class="block">Industrialización como catalizador, no conclusión</h3>
+  <div class="compare">
+    <div class="col"><div class="ttl"><small>Contención</small>Marxismo ortodoxo</div><ul><li>Foco: la fábrica y la industrialización</li><li>La ciudad es un mero subproducto, un contenedor de la mano de obra</li><li>Meta: dominar la producción industrial</li></ul></div>
+    <div class="col"><div class="ttl"><small>Explosión</small>Henri Lefebvre</div><ul><li>Foco: el fenómeno urbano</li><li>La industrialización solo es el detonante; la <b>urbanización</b> es el verdadero producto final de la sociedad</li><li>Meta: la racionalidad urbana debe sustituir a la industrial. El espacio es la nueva frontera</li></ul></div>
+  </div>
+
+  <h3 class="block">★ La crítica del urbanismo moderno: valor de uso vs. valor de cambio</h3>
+  <div class="compare">
+    <div class="col"><div class="ttl"><small>Valor de uso · necesidades humanas</small>La ciudad como obra (oeuvre)</div><ul><li>Impulsada por el <b>valor de uso</b></li><li>Definida por la espontaneidad y el <b>deseo</b> de vida social</li><li>Transfuncional: el <b>Monumento</b> (creativo, simbólico)</li><li>Multifuncional: la <b>Calle</b> (teatro social, interacción)</li><li>Lúdica: espacios de juego más allá del mero trabajo</li></ul></div>
+    <div class="col"><div class="ttl"><small>Valor de cambio · lógica capitalista</small>La ciudad como producto</div><ul><li>Impulsada por el <b>valor de cambio</b></li><li>Definida por el funcionalismo y la <b>segregación</b> ("máquina de segregar")</li><li>El mito del arquitecto: tecnócratas que diseñan espacios estériles y reducen al ciudadano a unidades cuantificables</li><li>El urbanismo funciona como <b>ideología</b> que enmascara la estrategia del capital</li></ul></div>
+  </div>
+
+  <h3 class="block">★ La anatomía del espacio abstracto</h3>
+  <p class="block-note">Las seis funciones con que el neocapitalismo "convierte el entorno en arma".</p>
+  <div class="matrix m6">
+    <div class="mcell"><span class="mn">1</span><h5>Fuerza de producción</h5><p>El espacio funciona como maquinaria o suelo de fábrica.</p></div>
+    <div class="mcell"><span class="mn">2</span><h5>Objeto de consumo</h5><p>El espacio se consume como mercancía: turismo, ocio, autopistas.</p></div>
+    <div class="mcell"><span class="mn">3</span><h5>Instrumento político</h5><p>El espacio se gestiona para el control social y la vigilancia.</p></div>
+    <div class="mcell"><span class="mn">4</span><h5>Relaciones de propiedad</h5><p>Inmobiliario, zonificación y jerarquía imponen físicamente las divisiones de clase.</p></div>
+    <div class="mcell"><span class="mn">5</span><h5>Estructura ideológica</h5><p>El espacio presenta una ilusión de neutralidad y ciencia para ocultar su diseño opresivo.</p></div>
+    <div class="mcell danger"><span class="mn">6</span><h5>Campo de batalla potencial</h5><p>El terreno físico donde la contracultura y la resistencia chocan inevitablemente con el Estado.</p></div>
+  </div>
+
+  <h3 class="block">La crisis de la centralidad</h3>
+  <div class="cards" data-cardset="v6">
+    <div class="card"><span class="tag">Centro</span><h4>Saturación y exclusión</h4><p>Concentración total de riqueza, poder, decisión y conocimiento. El centro se vuelve <span class="kw">saturado y exclusivo</span>.</p></div>
+    <div class="card"><span class="tag">Periferia</span><h4>Expulsión a las banlieues</h4><p>Expulsión espacial y violenta de la clase trabajadora marginada hacia los <span class="kw">banlieues</span> (suburbios/slums).</p></div>
+    <div class="card"><span class="tag">Mecanismo</span><h4>Escasez organizada</h4><p>El capitalismo <span class="kw">organiza intencionalmente la escasez de espacio</span>: el derecho al centro queda restringido por el valor de cambio.</p></div>
+  </div>
+
+  <h3 class="block">★ El derecho a la ciudad — autogestión generalizada</h3>
+  <p class="block-note">No es un derecho legal, sino una <span class="kw">demanda política y espacial radical</span> para recuperar el entorno urbano del valor de cambio. Se sostiene en tres pilares.</p>
+  <div class="matrix m6">
+    <div class="mcell"><span class="mn">I</span><h5>Derecho a la centralidad</h5><p>Rechazo absoluto a ser exiliado a la periferia: derecho a existir donde se concentran las decisiones y la riqueza (los "nodos de poder").</p></div>
+    <div class="mcell"><span class="mn">II</span><h5>Derecho a la apropiación</h5><p>Reclamar el espacio físico para el <span class="kw">valor de uso</span>, priorizando el deseo humano y la vida social sobre la propiedad y el beneficio.</p></div>
+    <div class="mcell"><span class="mn">III</span><h5>Derecho a la participación</h5><p>Romper el filtro de los especialistas tecnócratas: los ciudadanos deben ser los <span class="kw">diseñadores activos</span> de su vida cotidiana. Sin guardianes.</p></div>
+  </div>
+
+  <div class="schema">
+    <span class="s-label">El sociólogo como diseñador colectivo</span>
+    <h4>De la ciencia fragmentada a la praxis</h4>
+    <div class="flow">
+      <div class="step"><span class="st-n">✕</span><b>Ciencias fragmentadas</b><span>Se rechazan: aisladas, no captan el fenómeno urbano total.</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="st-n">02</span><b>Análisis riguroso</b><span>Estudiar la realidad concreta y empírica del paisaje urbano.</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="st-n">03</span><b>Utopía valiente</b><span>Combinar el análisis con demandas espaciales radicales e imaginativas.</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="st-n">04</span><b>Praxis</b><span>Diseño colectivo: forzar la imaginación del usuario hacia la auto-emancipación y la producción activa de su espacio.</span></div>
+    </div>
+  </div>
+
+  <h3 class="block">Más allá de la utopía — el legado</h3>
+  <div class="cards" data-cardset="v6">
+    <div class="card"><span class="tag">Crítica</span><h4>Demasiado libertario</h4><p>Marxistas posteriores lo critican por ser excesivamente anarquizante, libertario y por confiar en una visión idealizada de la apropiación espontánea.</p></div>
+    <div class="card"><span class="tag">Legado</span><h4>El nuevo sitio de la lucha</h4><p>Su intuición central cambió la sociología para siempre: el <span class="kw">paisaje urbano</span> —no el suelo de la fábrica— es el sitio primario de la lucha de clases moderna.</p></div>
+    <div class="card"><span class="tag blue">El futuro</span><h4>Manuel Castells</h4><p>Esta base teórica engendró el estudio empírico moderno de los <span class="kw">movimientos sociales urbanos</span>, mapeando el poder, las instituciones y la resistencia.</p></div>
+  </div>
+  <p class="no-match" data-scope="v6">Sin resultados en este módulo.</p>
+</section>
+
+<!-- ========================= PENSADORES ========================= -->
+<section class="view" id="vp">
+  <div class="sec-head"><span class="sec-num">★</span><h2 class="sec-title">Pensadores Clave</h2></div>
+  <p class="sec-intro">Repaso rápido: para cada autor, su <span class="hl">aportación esencial</span> a la lectura del espacio. Domina estos cinco y tendrás el esqueleto del examen.</p>
+
+  <div class="thinker"><div class="ini">B</div><div class="body"><h4>Gaston Bachelard / Pierre Bourdieu</h4><div class="role">La ruptura epistemológica</div><p>El hecho científico se conquista, construye y verifica. Hay que romper con la ilusión de transparencia y la naturalización. La unidad de análisis es la <b>relación</b>, no el individuo.</p><p class="tquote">"No hay elecciones innatas. Hay trayectorias sociales." — Bourdieu</p></div></div>
+
+  <div class="thinker t2"><div class="ini">M</div><div class="body"><h4>Karl Marx & Friedrich Engels</h4><div class="role">Emancipación y lucha · condiciones materiales</div><p>La ciudad es la manifestación física del <b>modo de producción</b>. Su historia es el cisma ciudad-campo (tribal → antigua → feudal → comercial → industrial). Engels: Manchester y el "urbanismo hipócrita".</p></div></div>
+
+  <div class="thinker t3"><div class="ini">W</div><div class="body"><h4>Max Weber</h4><div class="role">Capitalismo y racionalización · comprensiva</div><p>La ciudad occidental (mercado, honor, autoridad) como incubadora de racionalidad → derecho racional → burocracia → capitalismo. "El aire de la ciudad hace libre". Estudia la <b>acción social</b>.</p></div></div>
+
+  <div class="thinker"><div class="ini">D</div><div class="body"><h4>Émile Durkheim</h4><div class="role">Densidad moral · explicativa / positivista</div><p>Los <b>hechos sociales</b> coaccionan al individuo (leyes, moral). Explicar lo social por lo psicológico es siempre falso. Meta: explicar al individuo por el colectivo.</p></div></div>
+
+  <div class="thinker t2"><div class="ini">S</div><div class="body"><h4>Georg Simmel</h4><div class="role">La personalidad urbana</div><p>"La densidad no crea una ciudad". La metrópolis intensifica los estímulos: el intelecto como armadura, la actitud blasé, el aislamiento entre la multitud. La libertad urbana es una espada de doble filo.</p></div></div>
+
+  <div class="thinker t3"><div class="ini">H</div><div class="body"><h4>Maurice Halbwachs</h4><div class="role">La memoria colectiva</div><p>"El pasado no se conserva; se reconstruye". El espacio ofrece la ilusión de permanencia y es el sustrato material de la sociedad.</p></div></div>
+
+  <div class="thinker t2"><div class="ini">L</div><div class="body"><h4>Henri Lefebvre</h4><div class="role">La producción del espacio</div><p>El espacio (social) es un producto (social). Crítica del urbanismo (valor de uso vs. valor de cambio), anatomía del espacio abstracto, crisis de la centralidad y el <b>derecho a la ciudad</b> (centralidad, apropiación, participación).</p><p class="tquote">"Del derecho a la ciudad a la producción del espacio."</p></div></div>
+
+  <div class="thinker t3"><div class="ini">C</div><div class="body"><h4>Manuel Castells</h4><div class="role">Los movimientos sociales urbanos</div><p>Hereda y empiriza a Lefebvre: convierte la intuición de la ciudad como sitio de lucha en el estudio sistemático de los movimientos sociales urbanos.</p></div></div>
+</section>
+
+<!-- ========================= FLASHCARDS ========================= -->
+<section class="view" id="vf">
+  <div class="sec-head"><span class="sec-num">⚡</span><h2 class="sec-title">Flashcards</h2></div>
+  <p class="sec-intro">Toca la tarjeta para girarla. Intenta responder en voz alta <span class="hl">antes</span> de ver la respuesta — así fijas mejor. Filtra por módulo si quieres centrarte.</p>
+
+  <div class="fc-bar">
+    <div class="fc-progress">Tarjeta <b id="fcNum">1</b> de <b id="fcTot">1</b></div>
+    <div class="fc-filter" id="fcFilter">
+      <span class="fc-stage on" data-cat="all">Todas</span>
+      <span class="fc-stage" data-cat="Ruptura">Ruptura</span>
+      <span class="fc-stage" data-cat="Ciencias">Ciencias</span>
+      <span class="fc-stage" data-cat="Ciudad">Ciudad</span>
+      <span class="fc-stage" data-cat="Rural">Rural</span>
+      <span class="fc-stage" data-cat="Cotidiana">Cotidiana</span>
+      <span class="fc-stage" data-cat="Lefebvre">Lefebvre</span>
+    </div>
+  </div>
+
+  <div class="flashcard" id="flashcard">
+    <div class="fc-inner">
+      <div class="fc-face fc-front">
+        <div class="fc-cat" id="fcCat">—</div>
+        <div class="fc-term" id="fcTerm">—</div>
+        <div class="fc-hint">toca para ver la respuesta ↻</div>
+      </div>
+      <div class="fc-face fc-back">
+        <div class="fc-def" id="fcDef">—</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fc-nav">
+    <button class="fc-btn" id="fcPrev">← Anterior</button>
+    <button class="fc-btn primary" id="fcFlip">Girar ↻</button>
+    <button class="fc-btn" id="fcNext">Siguiente →</button>
+  </div>
+</section>
+
+<!-- ========================= QUIZ ========================= -->
+<section class="view" id="vq">
+  <div class="sec-head"><span class="sec-num">✎</span><h2 class="sec-title">Autoexamen</h2></div>
+  <p class="sec-intro">Preguntas de opción múltiple sobre todo el temario. Cada respuesta trae una explicación: úsalo para <span class="hl">detectar lagunas</span>, no solo para puntuar.</p>
+
+  <div class="quiz-wrap">
+    <div class="quiz-card" id="quizCard">
+      <div class="quiz-meta">
+        <span class="qn" id="quizQn">Pregunta 1</span>
+        <span class="score" id="quizScore">Aciertos: 0</span>
+      </div>
+      <div class="quiz-q" id="quizQ">—</div>
+      <div id="quizOpts"></div>
+      <div class="explain" id="quizExplain"></div>
+      <div class="quiz-foot">
+        <div class="dotbar" id="quizDots"></div>
+        <button class="fc-btn primary" id="quizNext" style="display:none">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div style="font-family:'Fraunces';font-style:italic;font-size:1.15rem;color:var(--ink)">"El espacio (social) es un producto (social)."</div>
+    <div>Guía de estudio · <b>Antropología del Espacio</b> · FAUP — Universidade do Porto</div>
+    <div style="font-size:.78rem">Material de repaso construido a partir de tus apuntes y diapositivas de clase. Verifica fechas y detalles del examen con el profesor.</div>
+  </div>
+</footer>
+
+<script>
+/* ---------------- NAV / VIEW SWITCHING ---------------- */
+const navbtns=[...document.querySelectorAll('.navbtn')];
+const views=[...document.querySelectorAll('.view')];
+navbtns.forEach(b=>b.addEventListener('click',()=>{
+  const id=b.dataset.view;
+  navbtns.forEach(x=>x.classList.toggle('active',x===b));
+  views.forEach(v=>v.classList.toggle('active',v.id===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(id==='vf') initFlash();
+  if(id==='vq') initQuiz();
+}));
+
+/* ---------------- SEARCH FILTER (per module) ---------------- */
+document.querySelectorAll('.searchbox input').forEach(inp=>{
+  const scope=inp.closest('.searchbox').dataset.scope;
+  inp.addEventListener('input',()=>{
+    const q=inp.value.trim().toLowerCase();
+    const view=document.getElementById(scope);
+    const cards=view.querySelectorAll('[data-cardset] .card');
+    let any=false;
+    cards.forEach(c=>{
+      const hit=c.textContent.toLowerCase().includes(q);
+      c.style.display=hit?'':'none';
+      if(hit)any=true;
+    });
+    const nm=view.querySelector('.no-match');
+    if(nm)nm.style.display=(q&&!any)?'block':'none';
+  });
+});
+
+/* ---------------- FLASHCARDS DATA ---------------- */
+const FLASH=[
+ {c:'Ruptura',t:'La ruptura epistemológica',d:'El mayor obstáculo para entender la sociedad es <strong>nuestra propia experiencia dentro de ella</strong>. Hay que romper con la ilusión de transparencia para construir un objeto científico riguroso.'},
+ {c:'Ruptura',t:'Ruptura · Construcción · Verificación',d:'Los tres momentos del método (Bourdieu/Bachelard): <strong>1)</strong> romper con el saber espontáneo (hipótesis); <strong>2)</strong> construir conceptos rigurosos; <strong>3)</strong> verificarlos contra la realidad.'},
+ {c:'Ruptura',t:'Naturalización',d:'El proceso por el que condiciones <strong>sociales</strong> se hacen parecer un <strong>destino biológico</strong> para justificar el statu quo. Obstáculo del naturalismo.'},
+ {c:'Ruptura',t:'Los 3 obstáculos y sus antídotos',d:'Naturalismo → <strong>relativización</strong>. Individualismo → <strong>relación</strong>. Etnocentrismo → <strong>relativización</strong>. Las herramientas: R + R + T (Relativización, Relación, Teoría).'},
+ {c:'Ruptura',t:'"Explicar lo social por lo psicológico es siempre falso"',d:'Cita de <strong>Durkheim</strong>. La sociología mira <strong>relaciones</strong>, no átomos: el individuo es un producto social.'},
+ {c:'Ruptura',t:'¿Es universal el "beneficio"?',d:'No. Caso contra el etnocentrismo: en muchas sociedades el estatus se gana <strong>regalando o destruyendo</strong> riqueza (potlatch), no acumulándola.'},
+ {c:'Ciencias',t:'¿De qué nacen las ciencias sociales?',d:'Del <strong>colapso del viejo orden</strong>: la industrialización y la urbanización quiebran la vida tradicional y la sociedad se vuelve un "problema" que exige gestión racional (s. XIX).'},
+ {c:'Ciencias',t:'Durkheim vs. Weber',d:'<strong>Durkheim:</strong> hechos sociales que coaccionan; enfoque explicativo/positivista. <strong>Weber:</strong> comprender la acción social orientada a otros; enfoque comprensivo.'},
+ {c:'Ciencias',t:'Métodos: cuantitativo vs. cualitativo',d:'<strong>Cuantitativo:</strong> estadísticas, censos, encuestas (explicativo). <strong>Cualitativo:</strong> observación y <strong>etnografía = trabajo de campo</strong> (comprensivo). También existen los mixtos.'},
+ {c:'Ciencias',t:'¿Por qué el conflicto entre paradigmas no es debilidad?',d:'Porque es el <strong>motor del progreso científico</strong>: las ciencias no están unificadas, están divididas por paradigmas en competencia atravesados por ideología y poder.'},
+ {c:'Ciudad',t:'La ciudad según Marx',d:'La <strong>manifestación física del modo de producción</strong>. "Lo urbano" distrae: hay que buscar las contradicciones económicas. Su historia es el cisma ciudad-campo.'},
+ {c:'Ciudad',t:'Las 5 etapas de la ciudad (Marx)',d:'Tribal (comunal) → antigua/Pólis (ciudad domina, propiedad por ciudadanía) → feudal (tierra = capital, siervo atado al suelo) → comercial (capital móvil) → <strong>industrial</strong> (sistema fabril, victoria total de la ciudad).'},
+ {c:'Ciudad',t:'Manchester · "urbanismo hipócrita" (Engels)',d:'Las tiendas alinean las calles principales para <strong>ocultar los slums</strong> a los ricos. La clase obrera vive escondida; los burgueses, en villas con "aire limpio".'},
+ {c:'Ciudad',t:'"Die Stadtluft macht frei"',d:'"El aire de la ciudad hace libre" (Weber): si un siervo entraba en la ciudad, el señor feudal <strong>perdía el derecho a reclamarlo</strong>. Los 3 ejes weberianos: mercado, honor, autoridad.'},
+ {c:'Ciudad',t:'"La densidad no crea una ciudad"',d:'Frase de <strong>Simmel</strong>: la ciudad es una forma de personalidad, no una cuestión demográfica. La metrópolis intensifica los estímulos y produce la actitud blasé.'},
+ {c:'Ciudad',t:'"El pasado no se conserva; se reconstruye"',d:'<strong>Halbwachs</strong> y la memoria colectiva. El espacio da la ilusión de permanencia y es el sustrato material de la sociedad.'},
+ {c:'Rural',t:'La dialéctica del espacio rural',d:'Tres planos: <strong>social, físico y simbólico</strong>. La urbanización es el proceso social que cambia el movimiento y la vida cotidiana del campo.'},
+ {c:'Rural',t:'"Total interknowledge" + control ecológico',d:'En el pueblo no urbanizado todos se conocen (proximidad espacial). El control ecológico crea <strong>transparencia hacia dentro y opacidad hacia fuera</strong>: solidaridad interna ↔ hostilidad externa.'},
+ {c:'Rural',t:'Los Notables',d:'Figuras que <strong>median entre el mundo local y el exterior</strong>. Las personas tienen un "sentido del lugar ocupado".'},
+ {c:'Rural',t:'El shock del sistema (rural)',d:'Tres fuerzas: <strong>mecanización → racionalización → individualización</strong>. La ciudad pasa a ser el modelo absoluto de aspiración; surge la dualidad de segundas residencias vs. residentes locales.'},
+ {c:'Cotidiana',t:'¿Industrializarse = urbanizarse?',d:'No. La densidad industrial temprana <strong>no crea ciudades automáticamente</strong>: la vida seguía siendo estructuralmente rural, ligada a controles ecológicos locales. El centro urbano real lo define la <strong>movilidad</strong>.'},
+ {c:'Cotidiana',t:'La ciudad invisible',d:'Sustituir el conocimiento interpersonal directo por <strong>evaluaciones institucionales abstractas</strong> y lógica comparativa. El salario en metálico individualiza (frente a raciones/vales).'},
+ {c:'Cotidiana',t:'El fin del control ecológico',d:'Con la movilidad, la observación directa de los vecinos ya no es posible; la vida se dispersa por geografías desconectadas y el control social localizado queda <strong>obsoleto</strong>, sustituido por regulación abstracta.'},
+ {c:'Cotidiana',t:'La gran disociación de la experiencia',d:'Espacio profesional (producción) separado por distancia del espacio extra-profesional (consumo, ocio, residencia). Resultado: <strong>dilución de la conciencia de clase</strong>.'},
+ {c:'Cotidiana',t:'★ Los 5 modos de apropiación del espacio',d:'<strong>1)</strong> Barrios tradicionales (memoria, control visual). <strong>2)</strong> Comunidades de transición (inmigrantes, amortiguador). <strong>3)</strong> Centros abandonados (marginados, atrapamiento). <strong>4)</strong> Slums (precarios, reglas internas, ayuda mutua). <strong>5)</strong> Comunidades alternativas (resistencia, autogestión).'},
+ {c:'Lefebvre',t:'El gran giro: de la ciudad al espacio',d:'La "ciudad" como objeto delimitado <strong>ha muerto</strong>; la urbanización total la sustituye. El verdadero campo de batalla del capitalismo tardío es el <strong>espacio</strong>. Premisa: el espacio (social) es un producto (social).'},
+ {c:'Lefebvre',t:'Industrialización: ¿catalizador o conclusión?',d:'Para Lefebvre la industrialización es solo el <strong>detonante</strong>; la urbanización es el verdadero producto final. La racionalidad urbana debe sustituir a la industrial (Contención → Explosión).'},
+ {c:'Lefebvre',t:'★ Valor de uso vs. valor de cambio',d:'La ciudad como <strong>obra (oeuvre)</strong>: valor de uso, deseo, el monumento y la calle, lo lúdico. La ciudad como <strong>producto</strong>: valor de cambio, funcionalismo, segregación; el urbanismo como ideología que enmascara el capital.'},
+ {c:'Lefebvre',t:'★ La anatomía del espacio abstracto',d:'Seis funciones: fuerza de producción, objeto de consumo, instrumento político, relaciones de propiedad, estructura ideológica y <strong>campo de batalla potencial</strong>.'},
+ {c:'Lefebvre',t:'La crisis de la centralidad',d:'El centro concentra riqueza/poder/decisión y se vuelve exclusivo; la clase trabajadora es expulsada a los <strong>banlieues</strong>. El capitalismo <strong>organiza la escasez de espacio</strong>: el centro se restringe por valor de cambio.'},
+ {c:'Lefebvre',t:'★ El derecho a la ciudad (3 pilares)',d:'Demanda política radical, no legal. <strong>I)</strong> Derecho a la centralidad. <strong>II)</strong> Derecho a la apropiación (valor de uso sobre beneficio). <strong>III)</strong> Derecho a la participación (sin tecnócratas: ciudadanos como diseñadores). = autogestión generalizada.'},
+ {c:'Lefebvre',t:'El sociólogo como diseñador colectivo',d:'Ciencias fragmentadas (✕) → análisis riguroso → utopía valiente → <strong>praxis</strong> (diseño colectivo y auto-emancipación).'},
+ {c:'Lefebvre',t:'Legado y crítica de Lefebvre',d:'Criticado por libertario e idealista. Su legado: el <strong>paisaje urbano</strong> (no la fábrica) es el sitio primario de la lucha de clases moderna. Engendró a <strong>Castells</strong> y el estudio de los movimientos sociales urbanos.'},
+];
+
+let fcList=FLASH.slice(), fcIdx=0;
+const $=id=>document.getElementById(id);
+function renderFlash(){
+  if(!fcList.length)return;
+  const card=fcList[fcIdx];
+  $('fcCat').textContent=card.c;
+  $('fcTerm').textContent=card.t;
+  $('fcDef').innerHTML=card.d;
+  $('fcNum').textContent=fcIdx+1;
+  $('fcTot').textContent=fcList.length;
+  $('flashcard').classList.remove('flipped');
+}
+function initFlash(){ if($('fcTerm').textContent==='—'||fcList.length===0){fcList=FLASH.slice();fcIdx=0;} renderFlash(); }
+$('flashcard').addEventListener('click',()=>$('flashcard').classList.toggle('flipped'));
+$('fcFlip').addEventListener('click',e=>{e.stopPropagation();$('flashcard').classList.toggle('flipped');});
+$('fcNext').addEventListener('click',()=>{fcIdx=(fcIdx+1)%fcList.length;renderFlash();});
+$('fcPrev').addEventListener('click',()=>{fcIdx=(fcIdx-1+fcList.length)%fcList.length;renderFlash();});
+document.getElementById('fcFilter').addEventListener('click',e=>{
+  if(!e.target.classList.contains('fc-stage'))return;
+  [...e.currentTarget.children].forEach(s=>s.classList.toggle('on',s===e.target));
+  const cat=e.target.dataset.cat;
+  fcList=(cat==='all')?FLASH.slice():FLASH.filter(f=>f.c===cat);
+  fcIdx=0;renderFlash();
+});
+
+/* ---------------- QUIZ DATA ---------------- */
+const QUIZ=[
+ {q:'Según Bourdieu y Bachelard, ¿cuál es el mayor obstáculo para entender la sociedad?',
+  o:['La falta de datos estadísticos','Nuestra propia experiencia inmediata dentro de ella','La complejidad matemática de los modelos','La ausencia de teoría económica'],a:1,
+  e:'La "ilusión de transparencia": creemos que vemos lo social directamente. La ciencia exige una <b>ruptura</b> con ese saber espontáneo.'},
+ {q:'Los tres momentos del método científico en la sociología son:',
+  o:['Observar, medir, predecir','Hipótesis, experimento, publicación','Ruptura, construcción, verificación','Inducción, deducción, abducción'],a:2,
+  e:'El hecho científico se <b>conquista</b> (ruptura), se <b>construye</b> (conceptos rigurosos) y se <b>verifica</b> contra la realidad.'},
+ {q:'¿Qué es la "naturalización" como obstáculo epistemológico?',
+  o:['Estudiar la naturaleza con métodos sociales','Hacer que condiciones sociales parezcan destino biológico para justificar el statu quo','El proceso de volverse ciudadano de un país','La adaptación del ser humano al medio rural'],a:1,
+  e:'Es la trampa del naturalismo: presentar lo social como "naturaleza humana" inmutable. Antídoto: la <b>relativización</b>.'},
+ {q:'Las tres herramientas de construcción (R+R+T) son:',
+  o:['Razón, rigor, teoría','Relativización, relación, teoría','Ruptura, revisión, test','Realidad, representación, racionalidad'],a:1,
+  e:'<b>Relativización</b> (contra etnocentrismo/naturalismo), <b>Relación</b> (contra individualismo) y <b>Teoría</b> (el plano para observar).'},
+ {q:'Para Durkheim, los "hechos sociales" se caracterizan porque:',
+  o:['Son producto del libre albedrío individual','Ejercen coerción sobre el individuo (leyes, moral)','Solo existen en sociedades urbanas','Se explican por la psicología individual'],a:1,
+  e:'Durkheim: enfoque <b>explicativo/positivista</b>. "Explicar lo social por lo psicológico es siempre falso." Meta: explicar al individuo por el colectivo.'},
+ {q:'La diferencia entre el enfoque de Durkheim y el de Weber es que Weber busca:',
+  o:['Explicar causalmente mediante hechos coercitivos','Comprender (verstehen) la acción social orientada a otros','Cuantificar la densidad moral','Eliminar la subjetividad del análisis'],a:1,
+  e:'Weber → enfoque <b>comprensivo</b>: interpretar el sentido de la acción social. Durkheim → enfoque <b>explicativo</b>.'},
+ {q:'En la etnografía, el método central es:',
+  o:['La encuesta estadística masiva','El análisis de censos oficiales','El trabajo de campo y la observación','El experimento de laboratorio'],a:2,
+  e:'Etnografía = <b>trabajo de campo</b> (observación directa, participante o no). Es un método cualitativo / comprensivo.'},
+ {q:'Para Marx, la ciudad es fundamentalmente:',
+  o:['Una incubadora de racionalidad jurídica','La manifestación física del modo de producción','Una comunidad definida por el mercado y el honor','Una forma de personalidad psicológica'],a:1,
+  e:'A diferencia de Weber (cultura) o Simmel (personalidad), Marx la lee por sus <b>condiciones materiales</b>. La incubadora de racionalidad es la lectura de Weber.'},
+ {q:'En el esquema marxista, ¿cuál es la secuencia correcta de etapas de la ciudad?',
+  o:['Antigua → tribal → industrial → feudal → comercial','Tribal → antigua (Pólis) → feudal → comercial → industrial','Feudal → tribal → comercial → industrial → antigua','Comercial → industrial → feudal → antigua → tribal'],a:1,
+  e:'Del estadio comunal tribal, pasando por el dominio de la Pólis y el feudalismo (tierra = capital), al capital móvil comercial y la <b>victoria total de la ciudad</b> industrial.'},
+ {q:'El "urbanismo hipócrita" que analiza Engels en Manchester consiste en:',
+  o:['Construir viviendas sociales baratas para los obreros','Alinear tiendas en las calles principales para ocultar los slums a los ricos','Convertir a los inquilinos en propietarios','Trasladar las fábricas a la periferia'],a:1,
+  e:'La <b>fachada</b> comercial esconde la miseria obrera de la mirada de los burgueses que circulan. Convertir inquilinos en propietarios es el "mito de Proudhon" (la falsa solución).'},
+ {q:'"Die Stadtluft macht frei" ("el aire de la ciudad hace libre") significa que:',
+  o:['Las ciudades tienen mejor calidad de aire','Si un siervo entraba en la ciudad, el señor feudal perdía el derecho a reclamarlo','La libertad de expresión nació en las ciudades','El comercio purifica las costumbres'],a:1,
+  e:'Idea weberiana: la ciudad medieval como espacio de <b>emancipación jurídica</b> frente al vínculo feudal.'},
+ {q:'¿A qué autor pertenece la idea de que "la densidad no crea una ciudad" y que la metrópolis produce la actitud blasé?',
+  o:['Durkheim','Halbwachs','Simmel','Castells'],a:2,
+  e:'<b>Simmel</b>: la ciudad es una forma de personalidad. La sobreestimulación nerviosa lleva al intelecto-como-armadura y al aislamiento entre la multitud.'},
+ {q:'En el espacio rural, "transparencia hacia dentro y opacidad hacia fuera" describe:',
+  o:['La arquitectura de las casas rurales','El control ecológico: solidaridad interna frente a hostilidad externa','La economía de subsistencia','El sistema de riego comunal'],a:1,
+  e:'El "total interknowledge" hace que la comunidad se vigile a sí misma (transparente dentro) y sea cerrada al exterior, generando solidaridad interna ↔ hostilidad externa.'},
+ {q:'El "shock del sistema" que moderniza el mundo rural se compone de:',
+  o:['Guerra, hambruna y migración','Mecanización, racionalización e individualización','Urbanización, industrialización y democracia','Mercado, honor y autoridad'],a:1,
+  e:'La mecanización agrícola desencadena la racionalización de la vida y la individualización, disolviendo el "nosotros" comunal.'},
+ {q:'¿Cuál NO es uno de los cinco modos de apropiación del espacio?',
+  o:['Barrios tradicionales','Comunidades de transición (zonas de llegada de inmigrantes)','Slums / bairros de lata','Distritos financieros corporativos'],a:3,
+  e:'Los cinco modos son: barrios tradicionales, comunidades de transición, centros abandonados, slums y comunidades alternativas. El distrito financiero no figura en la matriz.'},
+ {q:'Las comunidades alternativas (5.º modo de apropiación) se caracterizan por:',
+  o:['Ser zonas de llegada de migrantes rurales','La resistencia intencional de poblaciones formadas y la autogestión','El atrapamiento espacial de grupos marginados','La falta total de reglas internas'],a:1,
+  e:'Es una <b>resistencia intencional</b>: retorno deliberado al localismo y rechazo del anonimato moderno mediante la autogestión.'},
+ {q:'El "gran giro" de Lefebvre consiste en pasar de estudiar la ciudad a estudiar:',
+  o:['La fábrica','El espacio','El Estado','La familia'],a:1,
+  e:'La "ciudad" como objeto delimitado ha muerto: la urbanización total la sustituye y el <b>espacio</b> mismo es el campo de batalla del capitalismo tardío.'},
+ {q:'La premisa radical de Lefebvre es:',
+  o:['El espacio es un dato natural y neutro','El espacio (social) es un producto (social)','La ciudad es eterna e inmutable','La industria determina la cultura'],a:1,
+  e:'El espacio no es un contenedor vacío: es <b>producido socialmente</b>, con relaciones de poder inscritas en él.'},
+ {q:'Para Lefebvre, la ciudad como "obra" (oeuvre) se rige por el valor de uso, mientras que la ciudad como "producto" se rige por:',
+  o:['El valor de uso y el deseo','El valor de cambio, el funcionalismo y la segregación','La memoria colectiva','La densidad moral'],a:1,
+  e:'La ciudad-producto responde a la <b>lógica capitalista</b>: el urbanismo funciona como ideología que enmascara la estrategia del capital ("máquina de segregar").'},
+ {q:'¿Cuál de estas NO es una de las seis funciones de la "anatomía del espacio abstracto"?',
+  o:['Objeto de consumo','Instrumento político','Memoria colectiva','Campo de batalla potencial'],a:2,
+  e:'Las seis funciones son: fuerza de producción, objeto de consumo, instrumento político, relaciones de propiedad, estructura ideológica y campo de batalla potencial. La memoria colectiva es de Halbwachs.'},
+ {q:'En la "crisis de la centralidad", el capitalismo mantiene el control mediante:',
+  o:['La organización intencional de la escasez de espacio','La distribución igualitaria del suelo','La eliminación de las periferias','La planificación democrática del centro'],a:0,
+  e:'El derecho al centro queda restringido por el <b>valor de cambio</b>; la clase trabajadora es expulsada a los banlieues.'},
+ {q:'Los tres pilares del "derecho a la ciudad" de Lefebvre son:',
+  o:['Propiedad, mercado y trabajo','Centralidad, apropiación y participación','Libertad, igualdad y fraternidad','Producción, distribución y consumo'],a:1,
+  e:'Derecho a la <b>centralidad</b> (no ser exiliado), a la <b>apropiación</b> (valor de uso sobre beneficio) y a la <b>participación</b> (sin tecnócratas). = autogestión generalizada.'},
+ {q:'El legado central de Lefebvre, que recoge Manuel Castells, es la idea de que:',
+  o:['La fábrica es el único sitio de la lucha de clases','El paisaje urbano es el sitio primario de la lucha de clases moderna','La sociología debe abandonar la política','El espacio es independiente de la economía'],a:1,
+  e:'Desplazó el conflicto del suelo de la fábrica al <b>espacio urbano</b>; Castells lo convirtió en el estudio empírico de los movimientos sociales urbanos.'},
+];
+
+let qIdx=0,qScore=0,qAnswered=false;
+function buildDots(){
+  const bar=$('quizDots');bar.innerHTML='';
+  QUIZ.forEach((_,i)=>{const d=document.createElement('i');if(i<qIdx)d.classList.add('done');if(i===qIdx)d.classList.add('cur');bar.appendChild(d);});
+}
+function renderQuiz(){
+  qAnswered=false;
+  const item=QUIZ[qIdx];
+  $('quizQn').textContent='Pregunta '+(qIdx+1)+' / '+QUIZ.length;
+  $('quizScore').textContent='Aciertos: '+qScore;
+  $('quizQ').textContent=item.q;
+  const wrap=$('quizOpts');wrap.innerHTML='';
+  const marks=['A','B','C','D'];
+  item.o.forEach((opt,i)=>{
+    const b=document.createElement('button');
+    b.className='opt';b.innerHTML='<span class="mk">'+marks[i]+'</span>'+opt;
+    b.addEventListener('click',()=>answer(i,b));
+    wrap.appendChild(b);
+  });
+  const ex=$('quizExplain');ex.className='explain';ex.innerHTML='';
+  $('quizNext').style.display='none';
+  buildDots();
+}
+function answer(i,btn){
+  if(qAnswered)return;qAnswered=true;
+  const item=QUIZ[qIdx];
+  const opts=[...$('quizOpts').children];
+  opts.forEach((b,j)=>{
+    b.disabled=true;
+    if(j===item.a)b.classList.add('correct');
+    if(j===i&&i!==item.a)b.classList.add('wrong');
+  });
+  if(i===item.a)qScore++;
+  $('quizScore').textContent='Aciertos: '+qScore;
+  const ex=$('quizExplain');
+  ex.innerHTML=(i===item.a?'<b>✓ Correcto. </b>':'<b>✗ La respuesta correcta es '+['A','B','C','D'][item.a]+'. </b>')+item.e;
+  ex.classList.add('show');
+  $('quizNext').style.display='inline-block';
+  $('quizNext').textContent=(qIdx===QUIZ.length-1)?'Ver resultado →':'Siguiente →';
+}
+$('quizNext').addEventListener('click',()=>{
+  if(qIdx===QUIZ.length-1){showResult();}
+  else{qIdx++;renderQuiz();}
+});
+function showResult(){
+  const pct=Math.round(qScore/QUIZ.length*100);
+  let msg,head;
+  if(pct>=85){head='¡Dominas el temario!';msg='Listo para el examen. Repasa solo las flashcards marcadas con ★ para afinar.';}
+  else if(pct>=60){head='Buen nivel';msg='Tienes el esqueleto. Vuelve a los módulos donde fallaste, sobre todo Lefebvre y los 5 modos de apropiación.';}
+  else{head='A repasar con calma';msg='Recorre de nuevo los módulos por orden y usa las flashcards por categoría. El hilo central: el espacio es un producto social.';}
+  $('quizCard').innerHTML=
+    '<div class="quiz-result"><div class="lbl">Resultado</div><div class="big">'+pct+'%</div>'+
+    '<h4>'+head+'</h4><p>Has acertado <b>'+qScore+'</b> de <b>'+QUIZ.length+'</b> preguntas. '+msg+'</p>'+
+    '<button class="fc-btn primary" id="quizRestart">Reintentar ↻</button></div>';
+  document.getElementById('quizRestart').addEventListener('click',()=>{qIdx=0;qScore=0;rebuildQuizCard();renderQuiz();});
+}
+function rebuildQuizCard(){
+  $('quizCard').innerHTML=
+   '<div class="quiz-meta"><span class="qn" id="quizQn">Pregunta 1</span><span class="score" id="quizScore">Aciertos: 0</span></div>'+
+   '<div class="quiz-q" id="quizQ">—</div><div id="quizOpts"></div>'+
+   '<div class="explain" id="quizExplain"></div>'+
+   '<div class="quiz-foot"><div class="dotbar" id="quizDots"></div><button class="fc-btn primary" id="quizNext" style="display:none">Siguiente →</button></div>';
+  $('quizNext').addEventListener('click',()=>{ if(qIdx===QUIZ.length-1){showResult();}else{qIdx++;renderQuiz();} });
+}
+let quizStarted=false;
+function initQuiz(){ if(!quizStarted){quizStarted=true;qIdx=0;qScore=0;renderQuiz();} }
+</script>
+</body>
+</html>

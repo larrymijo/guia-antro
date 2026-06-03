@@ -332,18 +332,18 @@
   /* ---------- FIGURES / DIAGRAMS (blueprint plates) ---------- */
   .fig{
     position:relative;background:var(--card);border:1.5px solid var(--ink);
-    border-radius:14px;padding:30px 26px 22px;margin:26px 0;box-shadow:var(--shadow);
-    overflow:hidden;
+    border-radius:14px;padding:18px 26px 22px;margin:30px 0;box-shadow:var(--shadow);
+    overflow:visible;
   }
   .fig::before,.fig::after{content:"";position:absolute;width:14px;height:14px;border:2px solid var(--terra);opacity:.55}
   .fig::before{top:9px;left:9px;border-right:none;border-bottom:none}
   .fig::after{bottom:9px;right:9px;border-left:none;border-top:none}
   .fig .fig-label{
-    position:absolute;top:0;left:50%;transform:translate(-50%,-50%);
-    background:var(--slate);color:#f1ebdd;font-size:.62rem;letter-spacing:.22em;
-    text-transform:uppercase;font-weight:700;padding:4px 12px;border-radius:20px;white-space:nowrap;
+    display:block;width:fit-content;max-width:calc(100% - 8px);margin:0 auto 16px;
+    background:var(--slate);color:#f1ebdd;font-size:.64rem;letter-spacing:.14em;line-height:1.3;
+    text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:20px;text-align:center;
   }
-  .fig svg{display:block;width:100%;height:auto}
+  .fig svg{display:block;width:100%;height:auto;margin:0 auto}
   .fig figcaption{
     margin-top:14px;padding-top:12px;border-top:1px dashed var(--line-strong);
     font-size:.82rem;color:var(--ink-soft);line-height:1.5;text-align:center;
@@ -711,7 +711,7 @@
   <p class="sec-intro">El espacio rural se lee en una <span class="hl">dialéctica de tres planos</span>: social, físico y simbólico. La <strong>urbanización</strong> es el proceso social que cambia el movimiento y la vida cotidiana del campo, hasta reimaginar la ruralidad.</p>
 
   <figure class="fig">
-    <span class="fig-label">Figura 4.1 · Dialéctica rural y control ecológico</span>
+    <span class="fig-label">Figura 4.1 · Dialéctica rural</span>
     <svg viewBox="0 0 720 320" role="img" aria-label="Triángulo dialéctico del espacio rural y diagrama concéntrico del control ecológico">
       <text class="t-lbl" x="30" y="30" text-anchor="middle" transform="translate(155,0)">La dialéctica del espacio</text>
       <!-- triangle edges -->
@@ -788,7 +788,7 @@
   <p class="sec-intro">Industrialización, urbanización y la <span class="hl">reconfiguración de la sociedad</span>. Clave: industrializarse no es lo mismo que urbanizarse. La movilidad disuelve el control ecológico local y reorganiza toda la vida diaria.</p>
 
   <figure class="fig">
-    <span class="fig-label">Figura 5.1 · Los 5 modos de apropiación del espacio</span>
+    <span class="fig-label">Figura 5.1 · Modos de apropiación</span>
     <svg viewBox="0 0 720 230" role="img" aria-label="Tipología de los cinco modos de apropiación del espacio urbano">
       <text class="t-lbl" x="22" y="26">Cómo distintos grupos habitan y se apropian del espacio urbano</text>
 
@@ -984,12 +984,79 @@
     <div class="mcell danger"><span class="mn">6</span><h5>Campo de batalla potencial</h5><p>El terreno físico donde la contracultura y la resistencia chocan inevitablemente con el Estado.</p></div>
   </div>
 
+  <figure class="fig">
+    <span class="fig-label">Figura 6.3 · Las 6 funciones del espacio abstracto</span>
+    <svg viewBox="0 0 720 300" role="img" aria-label="Hexágono con las seis funciones que el neocapitalismo asigna al espacio abstracto">
+      <g class="d-line faint">
+        <line x1="360" y1="150" x2="165" y2="68"/><line x1="360" y1="150" x2="555" y2="68"/>
+        <line x1="360" y1="150" x2="120" y2="150"/><line x1="360" y1="150" x2="600" y2="150"/>
+        <line x1="360" y1="150" x2="165" y2="232"/><line x1="360" y1="150" x2="555" y2="232"/>
+      </g>
+
+      <polygon points="406,150 383,190 337,190 314,150 337,110 383,110" class="d-fill slate"/>
+      <text x="360" y="146" text-anchor="middle" class="t-lbl" style="font-size:10px">Espacio</text>
+      <text x="360" y="160" text-anchor="middle" class="t-lbl" style="font-size:10px">abstracto</text>
+
+      <g>
+        <rect x="90" y="49" width="150" height="38" rx="8" class="d-fill"/><text x="165" y="66" text-anchor="middle" class="t-lbl" style="font-size:10px">Fuerza de</text><text x="165" y="79" text-anchor="middle" class="t-lbl" style="font-size:10px">producción</text>
+        <rect x="480" y="49" width="150" height="38" rx="8" class="d-fill"/><text x="555" y="66" text-anchor="middle" class="t-lbl" style="font-size:10px">Objeto de</text><text x="555" y="79" text-anchor="middle" class="t-lbl" style="font-size:10px">consumo</text>
+        <rect x="45" y="131" width="150" height="38" rx="8" class="d-fill terra"/><text x="120" y="148" text-anchor="middle" class="t-terra" style="font-size:10px">Campo de</text><text x="120" y="161" text-anchor="middle" class="t-terra" style="font-size:10px">batalla</text>
+        <rect x="525" y="131" width="150" height="38" rx="8" class="d-fill"/><text x="600" y="148" text-anchor="middle" class="t-lbl" style="font-size:10px">Instrumento</text><text x="600" y="161" text-anchor="middle" class="t-lbl" style="font-size:10px">político</text>
+        <rect x="90" y="213" width="150" height="38" rx="8" class="d-fill"/><text x="165" y="230" text-anchor="middle" class="t-lbl" style="font-size:10px">Estructura</text><text x="165" y="243" text-anchor="middle" class="t-lbl" style="font-size:10px">ideológica</text>
+        <rect x="480" y="213" width="150" height="38" rx="8" class="d-fill"/><text x="555" y="230" text-anchor="middle" class="t-lbl" style="font-size:10px">Relaciones de</text><text x="555" y="243" text-anchor="middle" class="t-lbl" style="font-size:10px">propiedad</text>
+      </g>
+    </svg>
+    <figcaption>Las seis funciones con que el neocapitalismo «convierte el entorno en arma»: el espacio es a la vez <b>fuerza de producción</b>, <b>objeto de consumo</b>, <b>instrumento político</b>, soporte de las <b>relaciones de propiedad</b> y <b>estructura ideológica</b> que finge neutralidad — y por eso mismo, un <b>campo de batalla</b> potencial.</figcaption>
+  </figure>
+
   <h3 class="block">La crisis de la centralidad</h3>
   <div class="cards" data-cardset="v6">
     <div class="card"><span class="tag">Centro</span><h4>Saturación y exclusión</h4><p>Concentración total de riqueza, poder, decisión y conocimiento. El centro se vuelve <span class="kw">saturado y exclusivo</span>.</p></div>
     <div class="card"><span class="tag">Periferia</span><h4>Expulsión a las banlieues</h4><p>Expulsión espacial y violenta de la clase trabajadora marginada hacia los <span class="kw">banlieues</span> (suburbios/slums).</p></div>
     <div class="card"><span class="tag">Mecanismo</span><h4>Escasez organizada</h4><p>El capitalismo <span class="kw">organiza intencionalmente la escasez de espacio</span>: el derecho al centro queda restringido por el valor de cambio.</p></div>
   </div>
+
+  <figure class="fig">
+    <span class="fig-label">Figura 6.4 · La crisis de la centralidad</span>
+    <svg viewBox="0 0 720 300" role="img" aria-label="Diagrama concéntrico: un centro saturado que expulsa a la población hacia la periferia">
+      <defs>
+        <marker id="ahd64" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#bd4626"/></marker>
+      </defs>
+
+      <circle cx="360" cy="150" r="120" fill="none" class="d-line faint" stroke-dasharray="5 6"/>
+      <circle cx="360" cy="150" r="92" fill="none" class="d-line faint" stroke-dasharray="2 7"/>
+      <text x="360" y="22" text-anchor="middle" class="t-lbl" style="font-size:10px">La periferia · banlieues</text>
+
+      <g stroke="#bd4626" stroke-width="3" marker-end="url(#ahd64)">
+        <line x1="408" y1="150" x2="462" y2="150"/>
+        <line x1="394" y1="184" x2="432" y2="222"/>
+        <line x1="360" y1="198" x2="360" y2="252"/>
+        <line x1="326" y1="184" x2="288" y2="222"/>
+        <line x1="312" y1="150" x2="258" y2="150"/>
+        <line x1="326" y1="116" x2="288" y2="78"/>
+        <line x1="360" y1="102" x2="360" y2="48"/>
+        <line x1="394" y1="116" x2="432" y2="78"/>
+      </g>
+
+      <circle cx="360" cy="150" r="54" fill="#f6e0d6"/>
+      <circle cx="360" cy="150" r="44" fill="#2c4350" stroke="#1d1a14" stroke-width="1.6"/>
+      <text x="360" y="147" text-anchor="middle" class="t-white" style="font-size:11px;font-weight:700">CENTRA-</text>
+      <text x="360" y="161" text-anchor="middle" class="t-white" style="font-size:11px;font-weight:700">LIZACIÓN</text>
+
+      <g class="t-cap">
+        <text x="20" y="120">Concentración total</text>
+        <text x="20" y="134">de riqueza y poder</text>
+        <text x="20" y="148" class="t-terra" style="font-weight:700">→ centro exclusivo</text>
+      </g>
+      <g class="t-cap" text-anchor="end">
+        <text x="700" y="120">Expulsión de la</text>
+        <text x="700" y="134">clase trabajadora</text>
+        <text x="700" y="148" class="t-terra" style="font-weight:700">→ a los banlieues</text>
+      </g>
+      <text x="360" y="292" text-anchor="middle" class="t-cap" style="font-style:italic">El capitalismo organiza intencionalmente la escasez del espacio</text>
+    </svg>
+    <figcaption>El centro acumula riqueza, poder, decisión y conocimiento hasta volverse <b>saturado y exclusivo</b>, y expulsa a la clase trabajadora hacia los <b>banlieues</b>. El acceso al centro queda restringido por el <em>valor de cambio</em>: la escasez de espacio no es natural, está <b>organizada</b>.</figcaption>
+  </figure>
 
   <h3 class="block">★ El derecho a la ciudad — autogestión generalizada</h3>
   <p class="block-note">No es un derecho legal, sino una <span class="kw">demanda política y espacial radical</span> para recuperar el entorno urbano del valor de cambio. Se sostiene en tres pilares.</p>
@@ -998,6 +1065,36 @@
     <div class="mcell"><span class="mn">II</span><h5>Derecho a la apropiación</h5><p>Reclamar el espacio físico para el <span class="kw">valor de uso</span>, priorizando el deseo humano y la vida social sobre la propiedad y el beneficio.</p></div>
     <div class="mcell"><span class="mn">III</span><h5>Derecho a la participación</h5><p>Romper el filtro de los especialistas tecnócratas: los ciudadanos deben ser los <span class="kw">diseñadores activos</span> de su vida cotidiana. Sin guardianes.</p></div>
   </div>
+
+  <figure class="fig">
+    <span class="fig-label">Figura 6.5 · El derecho a la ciudad</span>
+    <svg viewBox="0 0 720 260" role="img" aria-label="Los tres pilares del derecho a la ciudad: centralidad, apropiación y participación">
+      <g class="d-line faint">
+        <line x1="360" y1="56" x2="150" y2="212"/><line x1="150" y1="212" x2="570" y2="212"/><line x1="570" y1="212" x2="360" y2="56"/>
+        <line x1="360" y1="150" x2="360" y2="56"/><line x1="360" y1="150" x2="150" y2="212"/><line x1="360" y1="150" x2="570" y2="212"/>
+      </g>
+
+      <rect x="272" y="132" width="176" height="38" rx="10" class="d-fill slate"/>
+      <text x="360" y="149" text-anchor="middle" class="t-lbl" style="font-size:10px">Derecho a</text>
+      <text x="360" y="163" text-anchor="middle" class="t-lbl" style="font-size:10px">la ciudad</text>
+
+      <rect x="260" y="34" width="200" height="44" rx="10" class="d-fill"/>
+      <text x="364" y="53" text-anchor="middle" class="t-lbl" style="font-size:10.5px">Centralidad</text>
+      <text x="364" y="68" text-anchor="middle" class="t-cap">no ser exiliado a la periferia</text>
+      <circle cx="260" cy="56" r="13" class="d-accent-fill"/><text x="260" y="60" text-anchor="middle" class="t-white" style="font-size:10px;font-weight:700">I</text>
+
+      <rect x="50" y="190" width="200" height="44" rx="10" class="d-fill"/>
+      <text x="154" y="209" text-anchor="middle" class="t-lbl" style="font-size:10.5px">Apropiación</text>
+      <text x="154" y="224" text-anchor="middle" class="t-cap">el espacio para el valor de uso</text>
+      <circle cx="50" cy="212" r="13" class="d-accent-fill"/><text x="50" y="216" text-anchor="middle" class="t-white" style="font-size:10px;font-weight:700">II</text>
+
+      <rect x="470" y="190" width="200" height="44" rx="10" class="d-fill"/>
+      <text x="574" y="209" text-anchor="middle" class="t-lbl" style="font-size:10.5px">Participación</text>
+      <text x="574" y="224" text-anchor="middle" class="t-cap">ciudadanos diseñadores</text>
+      <circle cx="470" cy="212" r="13" class="d-accent-fill"/><text x="470" y="216" text-anchor="middle" class="t-white" style="font-size:9px;font-weight:700">III</text>
+    </svg>
+    <figcaption>No es un derecho legal, sino una <b>demanda política y espacial</b> para recuperar la ciudad del valor de cambio. Se sostiene en tres pilares: el derecho a la <b>centralidad</b>, a la <b>apropiación</b> (espacio para el uso, no la propiedad) y a la <b>participación</b> —los habitantes como diseñadores activos, sin la tutela de los tecnócratas. En suma: <em>autogestión generalizada</em>.</figcaption>
+  </figure>
 
   <div class="schema">
     <span class="s-label">El sociólogo como diseñador colectivo</span>
